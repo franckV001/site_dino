@@ -2795,7 +2795,7 @@ export default function App() {
       {nav}
 
       {/* ═══════════════════════════════════════════════════════ SECTION 1: HERO */}
-      <section className="relative w-full min-h-screen flex flex-col overflow-hidden">
+      <section className="relative w-full h-screen flex flex-col overflow-hidden">
 
         {/* 1D — Background Video */}
         <AnimatePresence>
@@ -2846,7 +2846,7 @@ export default function App() {
               return (
                 <svg
                   viewBox="0 0 1000 115"
-                  className="w-full fill-[#111]"
+                  className="w-full fill-white"
                   aria-label="FRK-France"
                 >
                   <defs>
@@ -2941,7 +2941,7 @@ export default function App() {
         </motion.header>
 
         {/* Hero body: left + right sidebars */}
-        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-20 sm:mt-28 md:mt-32 pb-24 md:pb-0 z-10 flex-1">
+        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-10 sm:mt-14 md:mt-16 pb-24 md:pb-0 z-10 flex-1">
 
           {/* 1E — Left Sidebar */}
           <motion.div
@@ -2968,6 +2968,21 @@ export default function App() {
             >
               AGENCE<br />DIGITALE
             </motion.h2>
+
+            {/* CTA Contactez-nous */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-6"
+            >
+              <a
+                href="mailto:franckviator@gmail.com"
+                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300"
+              >
+                Contactez-nous
+                <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </motion.div>
 
             {/* Description */}
             <motion.p
@@ -3062,21 +3077,6 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* 1G — Bottom-left "Scroll to explore" */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-          className="absolute bottom-10 left-[2.5rem] md:left-[4rem] hidden md:flex items-center gap-4 z-10"
-        >
-          <div className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center gap-[4px]">
-            <span className="w-[1px] h-[12px] bg-white/70 block" />
-            <span className="w-[1px] h-[12px] bg-white/70 block" />
-          </div>
-          <span className="text-[10px] font-mono tracking-widest uppercase text-white/60 font-semibold">
-            Scroll to explore
-          </span>
-        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════ SECTION 2: EXPLORE OUR WORLD */}
