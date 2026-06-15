@@ -699,12 +699,12 @@ function ProjectDetailApex({}: { onBack: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-900 overflow-hidden"
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#f0f2f5] overflow-hidden"
       >
         <img
           src={`${base}index_2/apex_hero.webp?v=2`}
           alt="Site vitrine Apex Pro"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover object-top"
         />
       </motion.div>
 
@@ -1060,12 +1060,12 @@ function ProjectDetailRenaissanceAfrik({}: { onBack: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#0a0a0a] overflow-hidden"
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#f0f2f5] overflow-hidden"
       >
         <img
           src={`${base}index__3/hero_rennaissance_afrik.webp`}
           alt="Renaissance Afrik — Animation IA"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover object-center"
         />
       </motion.div>
 
