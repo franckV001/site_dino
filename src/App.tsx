@@ -3309,7 +3309,7 @@ export default function App() {
           <motion.div
             initial="initial"
             animate="animate"
-            variants={{ animate: { transition: { staggerChildren: 0.15, delayChildren: 0.6 } } }}
+            variants={{ animate: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } }}
             className="w-full md:w-[320px]"
           >
             {/* Section indicator */}
@@ -3370,16 +3370,12 @@ export default function App() {
               </AnimatePresence>
             </motion.div>
 
-            {/* Description */}
-            <motion.p
-              variants={fadeUp}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[20px] md:text-[26px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8"
-            >
+            {/* Description — LCP element: no animation so browser paints it immediately */}
+            <p className="text-[20px] md:text-[26px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8">
               Des outils digitaux qui font<br />
               croître votre activité —<br />
               web, apps et IA.
-            </motion.p>
+            </p>
 
             {/* CTA Button */}
             <motion.div
