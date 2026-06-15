@@ -463,27 +463,6 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
 
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://franckvsailingloc2.netlify.app/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
-
       {/* Hero carousel */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -711,27 +690,6 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
 
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://apex-pro-sigma.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
-
       {/* Hero image */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -913,27 +871,6 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
 
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://franckv001.github.io/targo-website-/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
-
       {/* Hero image */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -1113,27 +1050,6 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://youtu.be/gYeV3tKIgSQ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Voir la vidéo
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
 
       {/* Hero image */}
       <motion.div
@@ -1354,16 +1270,6 @@ function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; on
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Blog
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">8 min de lecture</span>
-      </header>
-
       {/* Hero */}
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
@@ -1557,11 +1463,6 @@ function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onN
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">6 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1654,11 +1555,6 @@ function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void;
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">7 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1750,11 +1646,6 @@ function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNav
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">6 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1876,11 +1767,6 @@ function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onN
   ];
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">9 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1976,16 +1862,6 @@ function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleCli
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <div />
-      </header>
 
       {/* Title */}
       <section className="pt-[57px] px-6 md:px-16 py-20 md:py-28 border-b border-gray-200">
@@ -2094,16 +1970,6 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 01 / 05</span>
-      </header>
 
       {/* Hero */}
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
@@ -2229,13 +2095,6 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
   }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 02 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2320,13 +2179,6 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
   }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 03 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2411,13 +2263,6 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
   }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 04 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2502,13 +2347,6 @@ function PageLancementSuivi({ onBack }: { onBack: () => void }) {
   }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 05 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2802,16 +2640,6 @@ function PageAPropos({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Accueil
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">À propos</span>
-      </header>
-
       {/* Hero */}
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-36">
         <div className="max-w-4xl mx-auto">
@@ -3125,6 +2953,7 @@ function SlidingNav({ onNavigate, onScrollTo }: { onNavigate: (page: string | nu
     { label: "Projets",   action: () => scrollOrGo("projets") },
     { label: "Processus", action: () => scrollOrGo("processus") },
     { label: "Blog",      action: () => onNavigate("blog") },
+    { label: "À propos",  action: () => onNavigate("a-propos") },
     { label: "Contact",   action: () => scrollOrGo("contact") },
   ];
 
@@ -3158,6 +2987,7 @@ function MobileNav({ onNavigate, onScrollTo }: { onNavigate: (page: string | nul
     { label: "Projets",   action: () => scrollOrGo("projets") },
     { label: "Processus", action: () => scrollOrGo("processus") },
     { label: "Blog",      action: () => onNavigate("blog") },
+    { label: "À propos",  action: () => onNavigate("a-propos") },
     { label: "Contact",   action: () => scrollOrGo("contact") },
   ];
 
