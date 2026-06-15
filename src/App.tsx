@@ -18,6 +18,8 @@ import {
   Bot,
 } from "lucide-react";
 
+const base = import.meta.env.BASE_URL;
+
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
 const chaptersData = [
@@ -193,7 +195,7 @@ const projectsData = [
     tags: ["Design Web", "No Code", "Marketing Digital", "IA", "Branding", "Test Application"],
     summary: "Redesign complet avec intégration Webflow et automatisation des commandes via Make. Résultat : +40 % de conversions.",
     url: "#",
-    image: "/Index/sailingloc.webp",
+    image: `${base}Index/sailingloc.webp`,
   },
   {
     id: "p2",
@@ -202,7 +204,7 @@ const projectsData = [
     tags: ["Design Web", "No Code"],
     summary: "Conception et développement d'un site vitrine immersif pour Apex Pro, spécialiste des exosquelettes de nouvelle génération.",
     url: "https://apex-pro-sigma.vercel.app",
-    image: "/index_2/apex.webp?v=2",
+    image: `${base}index_2/apex.webp?v=2`,
     objectPosition: "right",
   },
   {
@@ -211,7 +213,7 @@ const projectsData = [
     category: "No Code & IA",
     summary: "Création d'animations générées par intelligence artificielle — personnages, environnements et séquences visuelles produits entièrement avec des outils IA.",
     url: "https://youtu.be/gYeV3tKIgSQ",
-    image: "/index__3/hero_rennaissance_afrik.webp",
+    image: `${base}index__3/hero_rennaissance_afrik.webp`,
   },
   {
     id: "p4",
@@ -235,7 +237,7 @@ const projectsData = [
     category: "Design Web",
     summary: "Conception d'un site vitrine moderne pour Targo, service de transport rapide et simple. Interface claire, épurée et orientée conversion.",
     url: "https://franckv001.github.io/targo-website-/",
-    image: "/index_6/targo_card.webp",
+    image: `${base}index_6/targo_card.webp`,
   },
 ];
 
@@ -395,15 +397,15 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
 // ─── PROJECT DETAIL PAGE ─────────────────────────────────────────────────────
 
 const sailinglocImages = [
-  { src: "/carrouselle/hero_sailingLoc.webp?v=9", alt: "Hero — SailingLoc", contain: true },
-  { src: "/carrouselle/back_office_sailingLoc.webp?v=9", alt: "Back office — SailingLoc", contain: true },
-  { src: "/carrouselle/tableau_de_boord_sailig_Loc.webp?v=9", alt: "Tableau de bord — SailingLoc", contain: true },
-  { src: "/carrouselle/sauvegarde_sailingloc.webp?v=9", alt: "Sauvegarde — SailingLoc", contain: true },
-  { src: "/carrouselle/location_sailingloc.webp?v=9", alt: "Location — SailingLoc", contain: true },
-  { src: "/carrouselle/flyers.webp?v=9", alt: "Flyers — SailingLoc", contain: true },
-  { src: "/carrouselle/logotype_sailingloc.webp?v=9", alt: "Logotype — SailingLoc", contain: true },
-  { src: "/carrouselle/moodbard_sailingloc.webp?v=9", alt: "Moodboard — SailingLoc", contain: true },
-  { src: "/carrouselle/affiche_street_sailingloc.webp?v=9", alt: "Affiche street — SailingLoc", contain: true },
+  { src: `${base}carrouselle/hero_sailingLoc.webp?v=9`, alt: "Hero — SailingLoc", contain: true },
+  { src: `${base}carrouselle/back_office_sailingLoc.webp?v=9`, alt: "Back office — SailingLoc", contain: true },
+  { src: `${base}carrouselle/tableau_de_boord_sailig_Loc.webp?v=9`, alt: "Tableau de bord — SailingLoc", contain: true },
+  { src: `${base}carrouselle/sauvegarde_sailingloc.webp?v=9`, alt: "Sauvegarde — SailingLoc", contain: true },
+  { src: `${base}carrouselle/location_sailingloc.webp?v=9`, alt: "Location — SailingLoc", contain: true },
+  { src: `${base}carrouselle/flyers.webp?v=9`, alt: "Flyers — SailingLoc", contain: true },
+  { src: `${base}carrouselle/logotype_sailingloc.webp?v=9`, alt: "Logotype — SailingLoc", contain: true },
+  { src: `${base}carrouselle/moodbard_sailingloc.webp?v=9`, alt: "Moodboard — SailingLoc", contain: true },
+  { src: `${base}carrouselle/affiche_street_sailingloc.webp?v=9`, alt: "Affiche street — SailingLoc", contain: true },
 ];
 
 function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
@@ -692,7 +694,7 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
         className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-900 overflow-hidden"
       >
         <img
-          src="/index_2/apex_hero.webp?v=2"
+          src={`${base}index_2/apex_hero.webp?v=2`}
           alt="Site vitrine Apex Pro"
           className="w-full h-full object-contain"
         />
@@ -887,7 +889,7 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
         className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-50 overflow-hidden"
       >
         <img
-          src="/index_6/targo.webp"
+          src={`${base}index_6/targo.webp`}
           alt="Site vitrine Targo"
           className="w-full h-full object-cover"
         />
@@ -1081,7 +1083,7 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
         className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#0a0a0a] overflow-hidden"
       >
         <img
-          src="/index__3/hero_rennaissance_afrik.webp"
+          src={`${base}index__3/hero_rennaissance_afrik.webp`}
           alt="Renaissance Afrik — Animation IA"
           className="w-full h-full object-contain"
         />
@@ -2815,7 +2817,7 @@ export default function App() {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/video/Hero_video.mp4"
+                  src={`${base}video/Hero_video.mp4`}
                   type="video/mp4"
                 />
               </video>
