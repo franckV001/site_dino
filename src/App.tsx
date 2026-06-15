@@ -2450,7 +2450,7 @@ function NavTab({
         setPosition({ width, opacity: 1, left: ref.current.offsetLeft });
       }}
       onClick={onClick}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-[9px] uppercase tracking-widest text-white mix-blend-difference md:px-5 md:py-2 md:text-[10px] font-mono select-none"
+      className="relative z-10 block cursor-pointer px-3 py-1.5 text-[9px] uppercase tracking-widest text-white mix-blend-difference md:px-5 md:py-2 md:text-[10px] font-mono select-none whitespace-nowrap"
     >
       {children}
     </li>
