@@ -3635,6 +3635,104 @@ export default function App() {
 
       </section>
 
+      {/* ══════════════════════════════════════ SECTION MANIFESTE */}
+      <section className="relative w-full bg-white px-6 md:px-16 py-24 md:py-36 z-20 overflow-hidden">
+        {/* Grain décoratif */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
+          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }}
+        />
+
+        <div className="relative max-w-5xl mx-auto">
+
+          {/* Label */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-10"
+          >
+            Pourquoi FRK-France
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.05 }}
+            className="text-[1.9rem] sm:text-[2.8rem] md:text-[3.6rem] font-medium tracking-tight leading-[1.08] text-[#111] mb-8 max-w-3xl"
+          >
+            Un outil digital précis ne devrait pas coûter{" "}
+            <span className="text-gray-300">une fortune</span> ni prendre{" "}
+            <span className="text-gray-300">six mois</span>.
+          </motion.h2>
+
+          {/* Lead */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[15px] md:text-[17px] text-gray-500 leading-[1.85] max-w-2xl mb-20"
+          >
+            FRK-France existe pour donner aux PME et aux entrepreneurs
+            les mêmes armes que les grandes entreprises — livrées vite,
+            construites pour durer, et que vous gérez vous-même.
+          </motion.p>
+
+          {/* 3 piliers */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-t border-gray-100 pt-14">
+            {[
+              {
+                num: "01",
+                title: "Mission",
+                body: "Rendre le digital accessible aux PME et entrepreneurs — sans compromis sur la qualité, la vitesse ou l'autonomie du client.",
+              },
+              {
+                num: "02",
+                title: "Méthode",
+                body: "No-Code en priorité, développement sur mesure quand nécessaire, IA partout où c'est pertinent. Toujours orienté résultat mesurable.",
+              },
+              {
+                num: "03",
+                title: "Engagement",
+                body: "Vous êtes autonome à la livraison. Formation incluse, documentation fournie, accès complet. Votre outil vous appartient vraiment.",
+              },
+            ].map(({ num, title, body }, i) => (
+              <motion.div
+                key={num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.14 + i * 0.09 }}
+                className="flex flex-col gap-3"
+              >
+                <span className="text-[10px] font-mono text-[#f97316] tracking-widest">{num}</span>
+                <h3 className="text-[15px] font-semibold tracking-tight text-[#111]">{title}</h3>
+                <p className="text-[13px] text-gray-500 leading-relaxed">{body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Citation de marque */}
+          <motion.blockquote
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-16 border-l-2 border-[#f97316] pl-6"
+          >
+            <p className="text-[15px] md:text-[17px] text-[#111] font-medium leading-snug italic max-w-xl">
+              "Le meilleur outil digital, c'est celui que vos équipes utilisent vraiment — pas celui qui impressionne en démo."
+            </p>
+            <cite className="mt-3 block text-[10px] font-mono uppercase tracking-widest text-gray-400 not-italic">
+              Franck Viator · Fondateur, FRK-France
+            </cite>
+          </motion.blockquote>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════ SECTION 2: EXPLORE OUR WORLD */}
       <section id="expertise" className="relative w-full min-h-[75vh] md:min-h-screen bg-[#fcfcfc] flex flex-col items-center pt-24 md:pt-32 pb-0 z-20">
 
