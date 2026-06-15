@@ -24,11 +24,11 @@ const base = import.meta.env.BASE_URL;
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
 const chaptersData = [
-  { name: "Découverte & Analyse", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624247/01_udnber.png", description: "Audit de vos besoins, analyse de l'existant, cadrage du projet et définition des objectifs clés." },
-  { name: "Architecture & Design", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624374/02_pmvxxl.png", description: "Conception de la structure digitale, wireframing, choix des outils no-code ou dev selon le contexte." },
-  { name: "Production & Build", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624236/03_hcp3jc.png", description: "Développement, intégration et automatisation. Livraison rapide avec itérations continues." },
-  { name: "Test & Validation", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624256/04_get63z.png", description: "Recette fonctionnelle, tests UX, corrections et validation avant mise en production." },
-  { name: "Lancement & Suivi", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624251/05_kz1tyu.png", description: "Mise en ligne, monitoring des performances et accompagnement post-livraison." },
+  { name: "Découverte & Analyse", image: `${base}processus/01_decouverte.webp`, description: "Audit de vos besoins, analyse de l'existant, cadrage du projet et définition des objectifs clés." },
+  { name: "Architecture & Design", image: `${base}processus/02_architecture.webp`, description: "Conception de la structure digitale, wireframing, choix des outils no-code ou dev selon le contexte." },
+  { name: "Production & Build", image: `${base}processus/03_production.webp`, description: "Développement, intégration et automatisation. Livraison rapide avec itérations continues." },
+  { name: "Test & Validation", image: `${base}processus/04_test.webp`, description: "Recette fonctionnelle, tests UX, corrections et validation avant mise en production." },
+  { name: "Lancement & Suivi", image: `${base}processus/05_lancement.webp`, description: "Mise en ligne, monitoring des performances et accompagnement post-livraison." },
 ];
 
 // ─── ANIMATION VARIANTS ──────────────────────────────────────────────────────
