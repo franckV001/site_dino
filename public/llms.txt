@@ -14,6 +14,7 @@ FRK-France accompagne les entreprises dans leur transformation digitale : créat
 ## Pages principales
 
 - [Accueil](https://franckv001.github.io/site_dino/): Présentation de l'agence, services, projets, processus et contact.
+- [À propos](https://franckv001.github.io/site_dino/a-propos/): Histoire de l'agence, valeurs, équipe (Franck Viator, fondateur) et chiffres clés.
 - [Blog](https://franckv001.github.io/site_dino/blog/): Articles sur le No-Code, l'automatisation et l'IA à destination des PME.
 
 ## Articles de blog

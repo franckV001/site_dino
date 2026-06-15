@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- ── À propos ─────────────────────────────────────────────────────────── -->
+  <url>
+    <loc>https://franckv001.github.io/site_dino/a-propos/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ── Blog ─────────────────────────────────────────────────────────────── -->
   <url>
     <loc>https://franckv001.github.io/site_dino/blog/</loc>

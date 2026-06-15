@@ -49,6 +49,7 @@ const PATH_TO_PAGE: Record<string, string> = {
   "/processus/production-build/":     "production-build",
   "/processus/test-validation/":      "test-validation",
   "/processus/lancement-suivi/":      "lancement-suivi",
+  "/a-propos/":                       "a-propos",
 };
 
 // ─── DATA ───────────────────────────────────────────────────────────────────
@@ -2734,6 +2735,251 @@ function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
   );
 }
 
+// ─── PAGE : À PROPOS ─────────────────────────────────────────────────────────
+
+function PageAPropos({ onBack }: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "À propos de FRK-France — Agence No-Code Paris",
+      "Découvrez FRK-France : notre histoire, nos valeurs et l'équipe derrière vos projets digitaux. Agence No-Code & IA fondée à Paris en 2024.",
+      "/a-propos/"
+    );
+  }, []);
+
+  const values = [
+    {
+      icon: "→",
+      title: "Impact avant tout",
+      desc: "Chaque décision de design ou de technologie est évaluée à l'aune d'un seul critère : est-ce que ça fait croître votre activité ?",
+    },
+    {
+      icon: "◎",
+      title: "Transparence totale",
+      desc: "Devis détaillé, planning visible, code ou plateforme livrés. Pas de boîte noire. Vous savez toujours où en est votre projet.",
+    },
+    {
+      icon: "⚡",
+      title: "Vitesse de livraison",
+      desc: "Le No-Code n'est pas un compromis — c'est un avantage. Un site vitrine en 2 semaines, une app en 6. Vous testez vite, vous itérez vite.",
+    },
+    {
+      icon: "⊕",
+      title: "Autonomie client",
+      desc: "Vos outils vous appartiennent. Formation, documentation, accès complet. Vous devez pouvoir gérer votre site sans dépendre de nous.",
+    },
+  ];
+
+  const timeline = [
+    {
+      year: "2019",
+      label: "Premiers pas",
+      desc: "Formation autodidacte au design web et développement front-end. Premiers projets pour des associations et TPE parisiennes.",
+    },
+    {
+      year: "2021",
+      label: "Découverte du No-Code",
+      desc: "Webflow, Bubble, Make : une révélation. La promesse de livrer vite, à moindre coût, sans sacrifier la qualité. Le tournant.",
+    },
+    {
+      year: "2023",
+      label: "Automatisation & IA",
+      desc: "Intégration de l'IA générative dans les workflows clients. Automatisation de processus métier qui libèrent des dizaines d'heures par mois.",
+    },
+    {
+      year: "2024",
+      label: "Création de FRK-France",
+      desc: "Fondation de l'agence à Paris. Une structure légère, réactive, orientée résultats — pour PME et entrepreneurs qui veulent aller vite.",
+    },
+  ];
+
+  const stats = [
+    { value: "15+", label: "projets livrés" },
+    { value: "< 3 sem.", label: "délai moyen site vitrine" },
+    { value: "800 €", label: "budget de départ" },
+    { value: "100 %", label: "clients autonomes à la livraison" },
+  ];
+
+  return (
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
+        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
+          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
+          Accueil
+        </button>
+        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
+        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">À propos</span>
+      </header>
+
+      {/* Hero */}
+      <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-36">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-500 mb-8">FRK-France · Paris · Fondée en 2024</div>
+            <h1 className="text-[2.4rem] sm:text-[3.2rem] md:text-[4.5rem] font-medium tracking-tight leading-[1.04] mb-8">
+              On construit des outils<br className="hidden md:block" /> qui font vraiment<br className="hidden md:block" />{" "}
+              <span className="text-[#f97316]">croître votre activité.</span>
+            </h1>
+            <p className="text-[16px] md:text-[18px] text-gray-400 leading-[1.8] max-w-2xl">
+              FRK-France est une agence digitale indépendante spécialisée en No-Code, design web et automatisation IA. Pas de structure lourde, pas d'intermédiaires inutiles — juste l'essentiel, livré vite et bien.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Chiffres clés */}
+      <section className="px-6 md:px-16 py-16 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map(({ value, label }) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col gap-1"
+            >
+              <span className="text-[2rem] md:text-[2.6rem] font-medium tracking-tight text-[#111]">{value}</span>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-gray-400">{label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Histoire */}
+      <section className="px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-6">Notre histoire</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            De freelance à agence — une trajectoire construite sur le terrain.
+          </h2>
+          <div className="relative">
+            {/* Ligne verticale */}
+            <div className="absolute left-[3.5rem] top-0 bottom-0 w-px bg-gray-100 hidden md:block" />
+            <div className="flex flex-col gap-12">
+              {timeline.map(({ year, label, desc }, i) => (
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="flex gap-8 md:gap-16"
+                >
+                  <div className="shrink-0 w-14 text-right">
+                    <span className="text-[11px] font-mono text-[#f97316] tracking-widest">{year}</span>
+                  </div>
+                  <div className="flex flex-col gap-1 pb-2">
+                    <span className="text-[15px] font-medium text-[#111]">{label}</span>
+                    <p className="text-[14px] text-gray-500 leading-relaxed">{desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Valeurs */}
+      <section className="px-6 md:px-16 py-20 md:py-28 bg-[#0a0a0a] text-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-500 mb-6">Nos valeurs</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            Ce qui guide chaque projet, chaque décision, chaque ligne de code.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {values.map(({ icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className="flex flex-col gap-3 border-t border-white/10 pt-6"
+              >
+                <span className="text-[#f97316] text-[18px] font-light">{icon}</span>
+                <span className="text-[15px] font-medium tracking-tight">{title}</span>
+                <p className="text-[14px] text-gray-400 leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Équipe */}
+      <section className="px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-6">L'équipe</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            Une agence à taille humaine, un interlocuteur unique.
+          </h2>
+
+          {/* Profil fondateur */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row gap-10 items-start pb-12 border-b border-gray-100"
+          >
+            {/* Avatar */}
+            <div className="shrink-0 w-20 h-20 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+              <span className="text-[#f97316] text-[28px] font-medium tracking-tight">F</span>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <p className="text-[18px] font-medium tracking-tight">Franck Viator</p>
+                <p className="text-[11px] font-mono uppercase tracking-widest text-[#f97316] mt-0.5">Fondateur · Lead No-Code & IA</p>
+              </div>
+              <p className="text-[14px] text-gray-600 leading-relaxed max-w-xl">
+                Développeur autodidacte reconverti dans le No-Code, je travaille à l'intersection du design, de la technologie et de l'automatisation. Mon objectif : livrer des projets qui durent et que vous pouvez gérer vous-même.
+              </p>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {["Webflow", "Bubble", "Make", "n8n", "React", "TypeScript", "ChatGPT API"].map((skill) => (
+                  <span key={skill} className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 bg-gray-100 text-gray-500 rounded-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Réseau */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="pt-10"
+          >
+            <p className="text-[13px] text-gray-500 leading-relaxed max-w-xl">
+              Sur les projets plus larges, FRK-France s'appuie sur un réseau de freelances qualifiés — rédacteurs SEO, développeurs back-end, graphistes — tous sélectionnés pour leur exigence et leur réactivité.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 md:px-16 py-16 bg-gray-50">
+        <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Démarrons ensemble</div>
+            <h3 className="text-xl font-medium text-white tracking-tight">Parlez-moi de votre projet.</h3>
+            <p className="text-gray-400 text-[13px] mt-2">Session de découverte gratuite · 30 minutes · Sans engagement</p>
+          </div>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
+            Prendre contact
+            <ArrowUpRight size={15} strokeWidth={1.5} />
+          </a>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
 function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
   const scrollTo = (id: string) => {
     if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2766,6 +3012,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
               { label: "Projets",   action: () => scrollTo("projets") },
               { label: "Processus", action: () => scrollTo("processus") },
               { label: "Blog",      action: () => onNavigate?.("blog") },
+              { label: "À propos",  action: () => onNavigate?.("a-propos") },
               { label: "Contact",   action: () => scrollTo("contact") },
             ].map(({ label, action }) => (
               <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
@@ -3053,6 +3300,9 @@ export default function App() {
   }
   if (activePage === "blog-app-sans-developpeur") {
     return <>{nav}<BlogArticleAppSansDev onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
+  }
+  if (activePage === "a-propos") {
+    return <>{nav}<PageAPropos onBack={() => setActivePage(null)} /></>;
   }
   if (activePage === "decouverte-analyse") {
     return <>{nav}<PageDecouverteAnalyse onBack={() => setActivePage(null)} /></>;
