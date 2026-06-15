@@ -2815,7 +2815,7 @@ export default function App() {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="https://res.cloudinary.com/dsdxaxkiz/video/upload/v1779624998/magnific_use-img-2-as-the-exact-ba_Piu3X0W42C_wnrc8f.mp4"
+                  src="/video/Hero_video.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -2954,17 +2954,17 @@ export default function App() {
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex items-center gap-3 mb-6 text-xs font-mono"
+              className="flex items-center gap-3 mb-6 text-xs font-mono text-white"
             >
               <span>01</span>
-              <span className="w-16 h-[1.5px] bg-black/20 block" />
+              <span className="w-16 h-[1.5px] bg-white/30 block" />
             </motion.div>
 
             {/* Headline */}
             <motion.h2
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-tight leading-[1] mb-6"
+              className="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-tight leading-[1] mb-6 text-white"
             >
               AGENCE<br />DIGITALE
             </motion.h2>
@@ -2973,7 +2973,7 @@ export default function App() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[20px] md:text-[26px] text-gray-700 w-full max-w-[400px] leading-[1.5] mb-8"
+              className="text-[20px] md:text-[26px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8"
             >
               Des outils digitaux qui font<br />
               croître votre activité —<br />
@@ -3019,10 +3019,10 @@ export default function App() {
           >
             {/* Agency info */}
             <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <div className="text-[10px] font-bold font-mono tracking-widest uppercase mb-2">
+              <div className="text-[10px] font-bold font-mono tracking-widest uppercase mb-2 text-white">
                 FRK-France
               </div>
-              <div className="text-[12px] text-gray-600 leading-[1.6]">
+              <div className="text-[12px] text-white/70 leading-[1.6]">
                 Agence digitale<br />Paris, France
               </div>
             </motion.div>
@@ -3030,12 +3030,12 @@ export default function App() {
             {/* Stats */}
             <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-3">
               <div>
-                <div className="text-[10px] font-mono tracking-widest uppercase text-gray-500">Projets livrés</div>
-                <div className="text-[13px] font-medium">12 +</div>
+                <div className="text-[10px] font-mono tracking-widest uppercase text-white/60">Projets livrés</div>
+                <div className="text-[13px] font-medium text-white">12 +</div>
               </div>
               <div>
-                <div className="text-[10px] font-mono tracking-widest uppercase text-gray-500">Satisfaction</div>
-                <div className="text-[13px] font-medium">100 %</div>
+                <div className="text-[10px] font-mono tracking-widest uppercase text-white/60">Satisfaction</div>
+                <div className="text-[13px] font-medium text-white">100 %</div>
               </div>
             </motion.div>
 
@@ -3054,7 +3054,7 @@ export default function App() {
                     className="text-gray-600 group-hover:text-white transition-colors duration-300"
                   />
                 </div>
-                <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
+                <span className="text-[10px] font-mono uppercase tracking-widest font-bold text-white">
                   View Details
                 </span>
               </a>
@@ -3069,11 +3069,11 @@ export default function App() {
           transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
           className="absolute bottom-10 left-[2.5rem] md:left-[4rem] hidden md:flex items-center gap-4 z-10"
         >
-          <div className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center gap-[4px]">
-            <span className="w-[1px] h-[12px] bg-gray-600 block" />
-            <span className="w-[1px] h-[12px] bg-gray-600 block" />
+          <div className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center gap-[4px]">
+            <span className="w-[1px] h-[12px] bg-white/70 block" />
+            <span className="w-[1px] h-[12px] bg-white/70 block" />
           </div>
-          <span className="text-[10px] font-mono tracking-widest uppercase text-gray-500 font-semibold">
+          <span className="text-[10px] font-mono tracking-widest uppercase text-white/60 font-semibold">
             Scroll to explore
           </span>
         </motion.div>
