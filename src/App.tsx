@@ -441,7 +441,7 @@ const sailinglocImages = [
   { src: `${base}carrouselle/affiche_street_sailingloc.webp?v=9`, alt: "Affiche street — SailingLoc", contain: true },
 ];
 
-function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
+function ProjectDetailSailingloc({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -678,7 +678,7 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
 
 // ─── PROJECT DETAIL: APEX PRO ────────────────────────────────────────────────
 
-function ProjectDetailApex({ onBack }: { onBack: () => void }) {
+function ProjectDetailApex({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -859,7 +859,7 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
 
 // ─── PROJECT DETAIL: TARGO ───────────────────────────────────────────────────
 
-function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
+function ProjectDetailTargo({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1039,7 +1039,7 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
 
 // ─── PROJECT DETAIL: RENAISSANCE AFRIK ──────────────────────────────────────
 
-function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
+function ProjectDetailRenaissanceAfrik({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1250,7 +1250,7 @@ function RelatedArticles({ ids, onNavigate }: { ids: string[]; onNavigate: (page
 
 // ─── BLOG ARTICLE: NO-CODE VS DEV ───────────────────────────────────────────
 
-function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+function BlogArticleNocodeVsDev({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1449,7 +1449,7 @@ function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; on
 
 // ─── BLOG ARTICLE: 5 PROCESSUS ───────────────────────────────────────────────
 
-function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+function BlogArticle5Processus({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1541,7 +1541,7 @@ function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onN
 
 // ─── BLOG ARTICLE: IA PRODUCTIVITÉ PME ───────────────────────────────────────
 
-function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+function BlogArticleIaProductivite({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1632,7 +1632,7 @@ function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void;
 
 // ─── BLOG ARTICLE: SITE QUI FAIT FUIR ────────────────────────────────────────
 
-function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+function BlogArticleSiteFuir({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1739,7 +1739,7 @@ function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNav
 
 // ─── BLOG ARTICLE: APP SANS DÉVELOPPEUR ──────────────────────────────────────
 
-function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+function BlogArticleAppSansDev({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1851,7 +1851,7 @@ function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onN
 
 // ─── BLOG PAGE ───────────────────────────────────────────────────────────────
 
-function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleClick: (id: string) => void }) {
+function BlogPage({ onArticleClick }: { onBack: () => void; onArticleClick: (id: string) => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -1959,7 +1959,7 @@ function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleCli
 
 // ─── PAGE: DÉCOUVERTE & ANALYSE ──────────────────────────────────────────────
 
-function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
+function PageDecouverteAnalyse({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -2085,7 +2085,7 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: ARCHITECTURE & DESIGN ─────────────────────────────────────────────
 
-function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
+function PageArchitectureDesign({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -2169,7 +2169,7 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: PRODUCTION & BUILD ─────────────────────────────────────────────────
 
-function PageProductionBuild({ onBack }: { onBack: () => void }) {
+function PageProductionBuild({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -2253,7 +2253,7 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: TEST & VALIDATION ──────────────────────────────────────────────────
 
-function PageTestValidation({ onBack }: { onBack: () => void }) {
+function PageTestValidation({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -2337,7 +2337,7 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: LANCEMENT & SUIVI ──────────────────────────────────────────────────
 
-function PageLancementSuivi({ onBack }: { onBack: () => void }) {
+function PageLancementSuivi({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
@@ -2576,7 +2576,7 @@ function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
 
 // ─── PAGE : À PROPOS ─────────────────────────────────────────────────────────
 
-function PageAPropos({ onBack }: { onBack: () => void }) {
+function PageAPropos({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
