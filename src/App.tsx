@@ -21,11 +21,35 @@ import {
 
 const base = import.meta.env.BASE_URL;
 
-function setPageMeta(title: string, description: string) {
+const SITE = "https://franckv001.github.io/site_dino";
+
+function setPageMeta(title: string, description: string, path: string) {
+  const url = `${SITE}${path}`;
   document.title = title;
-  const meta = document.querySelector('meta[name="description"]');
-  if (meta) meta.setAttribute("content", description);
+  document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+  document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
+  document.querySelector('meta[property="og:url"]')?.setAttribute("content", url);
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+  history.replaceState(null, "", `/site_dino${path}`);
 }
+
+const PATH_TO_PAGE: Record<string, string> = {
+  "/blog/":                      "blog",
+  "/blog/nocode-vs-dev/":        "blog-nocode-vs-dev",
+  "/blog/5-processus-automatiser/": "blog-5-processus-automatiser",
+  "/blog/ia-productivite-pme/":  "blog-ia-productivite-pme",
+  "/blog/site-qui-fait-fuir/":   "blog-site-qui-fait-fuir",
+  "/blog/app-sans-developpeur/": "blog-app-sans-developpeur",
+  "/projets/sailingloc/":        "p1",
+  "/projets/apex-pro/":          "p2",
+  "/projets/renaissance-afrik/": "p3",
+  "/projets/targo/":             "p6",
+  "/processus/decouverte-analyse/":   "decouverte-analyse",
+  "/processus/architecture-design/":  "architecture-design",
+  "/processus/production-build/":     "production-build",
+  "/processus/test-validation/":      "test-validation",
+  "/processus/lancement-suivi/":      "lancement-suivi",
+};
 
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
@@ -420,7 +444,8 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Projet SailingLoc — FRK-France",
-      "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make."
+      "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make.",
+      "/projets/sailingloc/"
     );
   }, []);
 
@@ -677,7 +702,8 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Projet Apex Pro — FRK-France",
-      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides."
+      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides.",
+      "/projets/apex-pro/"
     );
   }, []);
 
@@ -878,7 +904,8 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Projet Targo — FRK-France",
-      "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble."
+      "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble.",
+      "/projets/targo/"
     );
   }, []);
 
@@ -1078,7 +1105,8 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Projet Renaissance Afrik — FRK-France",
-      "Renaissance Afrik — identité visuelle et présence digitale créées par FRK-France pour valoriser l'artisanat et la culture africaine en ligne."
+      "Renaissance Afrik — identité visuelle et présence digitale créées par FRK-France pour valoriser l'artisanat et la culture africaine en ligne.",
+      "/projets/renaissance-afrik/"
     );
   }, []);
 
@@ -1309,7 +1337,8 @@ function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; on
     window.scrollTo(0, 0);
     setPageMeta(
       "No-Code vs Développement classique — FRK-France",
-      "No-Code ou développement classique ? Comparez budgets, délais et cas d'usage pour choisir la meilleure approche pour votre projet digital en 2026."
+      "No-Code ou développement classique ? Comparez budgets, délais et cas d'usage pour choisir la meilleure approche pour votre projet digital en 2026.",
+      "/blog/nocode-vs-dev/"
     );
   }, []);
 
@@ -1517,7 +1546,8 @@ function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onN
     window.scrollTo(0, 0);
     setPageMeta(
       "5 processus à automatiser dans votre PME — FRK-France",
-      "Découvrez 5 processus que toute PME devrait automatiser avec Make, n8n ou Zapier pour gagner des heures par semaine et réduire les erreurs humaines."
+      "Découvrez 5 processus que toute PME devrait automatiser avec Make, n8n ou Zapier pour gagner des heures par semaine et réduire les erreurs humaines.",
+      "/blog/5-processus-automatiser/"
     );
   }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
@@ -1613,7 +1643,8 @@ function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void;
     window.scrollTo(0, 0);
     setPageMeta(
       "Comment l'IA double la productivité de votre équipe — FRK-France",
-      "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code."
+      "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code.",
+      "/blog/ia-productivite-pme/"
     );
   }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
@@ -1708,7 +1739,8 @@ function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNav
     window.scrollTo(0, 0);
     setPageMeta(
       "7 erreurs qui font fuir vos visiteurs — FRK-France",
-      "Trop lent, illisible sur mobile, sans CTA clair ? Découvrez les 7 erreurs de site qui font fuir vos visiteurs et comment les corriger rapidement."
+      "Trop lent, illisible sur mobile, sans CTA clair ? Découvrez les 7 erreurs de site qui font fuir vos visiteurs et comment les corriger rapidement.",
+      "/blog/site-qui-fait-fuir/"
     );
   }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
@@ -1819,7 +1851,8 @@ function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onN
     window.scrollTo(0, 0);
     setPageMeta(
       "Créer une app sans développeur — FRK-France",
-      "Créez votre application web sans coder avec Bubble, Glide ou Softr. Guide pratique, coûts réels et étapes clés pour lancer votre app en 30 jours."
+      "Créez votre application web sans coder avec Bubble, Glide ou Softr. Guide pratique, coûts réels et étapes clés pour lancer votre app en 30 jours.",
+      "/blog/app-sans-developpeur/"
     );
   }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
@@ -1935,7 +1968,8 @@ function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleCli
     window.scrollTo(0, 0);
     setPageMeta(
       "Blog — No-Code, IA et Automatisation — FRK-France",
-      "Tous les articles de FRK-France sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs."
+      "Tous les articles de FRK-France sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs.",
+      "/blog/"
     );
   }, []);
 
@@ -2052,7 +2086,8 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Découverte & Analyse — Notre processus — FRK-France",
-      "FRK-France audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs."
+      "FRK-France audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs.",
+      "/processus/decouverte-analyse/"
     );
   }, []);
 
@@ -2187,7 +2222,8 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Architecture & Design — Notre processus — FRK-France",
-      "FRK-France conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés."
+      "FRK-France conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés.",
+      "/processus/architecture-design/"
     );
   }, []);
   return (
@@ -2277,7 +2313,8 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Production & Build — Notre processus — FRK-France",
-      "FRK-France développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats."
+      "FRK-France développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats.",
+      "/processus/production-build/"
     );
   }, []);
   return (
@@ -2367,7 +2404,8 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Test & Validation — Notre processus — FRK-France",
-      "FRK-France assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital."
+      "FRK-France assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital.",
+      "/processus/test-validation/"
     );
   }, []);
   return (
@@ -2457,7 +2495,8 @@ function PageLancementSuivi({ onBack }: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "Lancement & Suivi — Notre processus — FRK-France",
-      "FRK-France accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital."
+      "FRK-France accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital.",
+      "/processus/lancement-suivi/"
     );
   }, []);
   return (
@@ -2928,10 +2967,21 @@ export default function App() {
     if (activePage === null) {
       setPageMeta(
         "FRK-France — Agence Digitale",
-        "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs."
+        "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs.",
+        "/"
       );
     }
   }, [activePage]);
+
+  // Deep-link: restore page from sessionStorage (set by 404.html redirect)
+  useEffect(() => {
+    const redirect = sessionStorage.getItem("spa_redirect");
+    if (redirect) {
+      sessionStorage.removeItem("spa_redirect");
+      const page = PATH_TO_PAGE[redirect];
+      if (page) setActivePage(page);
+    }
+  }, []);
 
   // Video delay
   useEffect(() => {

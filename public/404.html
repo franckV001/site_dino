@@ -138,6 +138,10 @@
     </div>
 
     <script>
+      // Store SPA path for deep-link rehydration
+      const spa = location.pathname.replace('/site_dino', '') || '/';
+      if (spa && spa !== '/') sessionStorage.setItem('spa_redirect', spa);
+
       let n = 8;
       const el = document.getElementById("count");
       const iv = setInterval(() => {
