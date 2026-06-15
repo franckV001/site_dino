@@ -1240,9 +1240,41 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
   );
 }
 
+// ─── RELATED ARTICLES ────────────────────────────────────────────────────────
+
+const allArticles: Record<string, { id: string; cat: string; catColor: string; title: string }> = {
+  "nocode-vs-dev":           { id: "nocode-vs-dev",           cat: "No-Code",        catColor: "bg-[#f97316]", title: "No-Code vs Développement classique" },
+  "5-processus-automatiser": { id: "5-processus-automatiser", cat: "Automatisation",  catColor: "bg-[#a855f7]", title: "5 processus à automatiser cette année" },
+  "ia-productivite-pme":     { id: "ia-productivite-pme",     cat: "IA",             catColor: "bg-[#a855f7]", title: "L'IA pour doubler la productivité de votre équipe" },
+  "site-qui-fait-fuir":      { id: "site-qui-fait-fuir",      cat: "Web Design",     catColor: "bg-[#ec4899]", title: "Pourquoi votre site fait fuir vos clients" },
+  "app-sans-developpeur":    { id: "app-sans-developpeur",    cat: "No-Code",        catColor: "bg-[#f97316]", title: "Créer une app sans développeur en 30 jours" },
+};
+
+function RelatedArticles({ ids, onNavigate }: { ids: string[]; onNavigate: (page: string) => void }) {
+  const articles = ids.map(id => allArticles[id]).filter(Boolean);
+  if (!articles.length) return null;
+  return (
+    <div className="mt-16 pt-10 border-t border-gray-200">
+      <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-6">Articles liés</p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {articles.map(a => (
+          <button
+            key={a.id}
+            onClick={() => onNavigate(`blog-${a.id}`)}
+            className="group text-left border border-gray-200 rounded-md px-5 py-4 hover:border-[#111] transition-colors duration-300"
+          >
+            <span className={`inline-block text-[9px] font-mono uppercase tracking-widest text-white ${a.catColor} px-2 py-0.5 rounded-full mb-2`}>{a.cat}</span>
+            <p className="text-[13px] font-medium text-[#111] leading-snug group-hover:underline underline-offset-2">{a.title}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── BLOG ARTICLE: NO-CODE VS DEV ───────────────────────────────────────────
 
-function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
+function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const tableRows = [
@@ -1434,7 +1466,9 @@ function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
           </a>
         </div>
       </section>
-
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["5-processus-automatiser", "ia-productivite-pme", "site-qui-fait-fuir", "app-sans-developpeur"]} onNavigate={onNavigate} />
+      </div>
       <SiteFooter />
     </div>
   );
@@ -1442,7 +1476,7 @@ function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: 5 PROCESSUS ───────────────────────────────────────────────
 
-function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
+function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
@@ -1522,6 +1556,9 @@ function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
           <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["ia-productivite-pme", "nocode-vs-dev"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1529,7 +1566,7 @@ function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: IA PRODUCTIVITÉ PME ───────────────────────────────────────
 
-function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
+function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
@@ -1608,6 +1645,9 @@ function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
           <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["5-processus-automatiser", "nocode-vs-dev"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1615,7 +1655,7 @@ function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: SITE QUI FAIT FUIR ────────────────────────────────────────
 
-function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
+function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
@@ -1710,6 +1750,9 @@ function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
           <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["nocode-vs-dev", "app-sans-developpeur"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1717,7 +1760,7 @@ function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: APP SANS DÉVELOPPEUR ──────────────────────────────────────
 
-function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
+function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
@@ -1817,6 +1860,9 @@ function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
           <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["nocode-vs-dev", "5-processus-automatiser"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -2440,30 +2486,42 @@ const faqItems = [
   {
     q: "Combien coûte un projet ?",
     a: "Chaque projet est unique. Un site vitrine no-code démarre à partir de 800 €, une application sur mesure à partir de 2 500 €. Je fournis un devis détaillé après une session de découverte gratuite de 30 minutes.",
+    link: "blog-app-sans-developpeur",
+    linkLabel: "Créer une app en 30 jours →",
   },
   {
     q: "Quel est le délai de livraison ?",
     a: "Un site vitrine est livré en 1 à 3 semaines. Une application avec automatisations prend généralement 3 à 6 semaines selon le périmètre défini en phase de cadrage.",
+    link: null,
+    linkLabel: null,
   },
   {
     q: "No-Code ou développement classique ?",
     a: "Le No-Code (Webflow, Bubble…) livre plus vite à moindre coût, avec un contenu modifiable par vous-même. Le développement sur mesure est préféré pour des logiques métier très spécifiques ou des performances maximales. Je vous conseille l'approche adaptée à votre contexte.",
+    link: "blog-nocode-vs-dev",
+    linkLabel: "Lire le comparatif complet →",
   },
   {
     q: "Puis-je modifier mon site après la livraison ?",
     a: "Oui. Les projets No-Code sont conçus pour que vous puissiez mettre à jour contenus et images sans toucher au code. Pour les projets développés, je fournis une documentation et une formation à la prise en main.",
+    link: "blog-site-qui-fait-fuir",
+    linkLabel: "7 erreurs qui font fuir vos visiteurs →",
   },
   {
     q: "L'IA peut-elle vraiment automatiser mes processus ?",
     a: "Oui — traitement d'emails, qualification de leads, génération de rapports, relances clients… Lors de notre session de découverte, j'identifie les 3 automatisations les plus impactantes à prioriser pour votre activité.",
+    link: "blog-5-processus-automatiser",
+    linkLabel: "5 processus à automatiser dès maintenant →",
   },
   {
     q: "Proposez-vous un suivi après le lancement ?",
     a: "Oui, une période de suivi post-lancement de 2 semaines est incluse dans chaque projet. Des forfaits de maintenance mensuelle sont disponibles pour assurer mises à jour et optimisations continues.",
+    link: null,
+    linkLabel: null,
   },
 ];
 
-function FaqSection() {
+function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -2511,6 +2569,14 @@ function FaqSection() {
                     <p className="pt-4 pr-10 text-[14px] text-gray-500 leading-relaxed">
                       {item.a}
                     </p>
+                    {item.link && item.linkLabel && onNavigate && (
+                      <button
+                        onClick={() => onNavigate(item.link!)}
+                        className="mt-3 text-[11px] font-mono tracking-[0.12em] text-[#f97316] hover:text-[#ea6b0a] transition-colors duration-200"
+                      >
+                        {item.linkLabel}
+                      </button>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -2819,19 +2885,19 @@ export default function App() {
     return <>{nav}<BlogPage onBack={() => setActivePage(null)} onArticleClick={(id) => setActivePage(`blog-${id}`)} /></>;
   }
   if (activePage === "blog-nocode-vs-dev") {
-    return <>{nav}<BlogArticleNocodeVsDev onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleNocodeVsDev onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-5-processus-automatiser") {
-    return <>{nav}<BlogArticle5Processus onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticle5Processus onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-ia-productivite-pme") {
-    return <>{nav}<BlogArticleIaProductivite onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleIaProductivite onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-site-qui-fait-fuir") {
-    return <>{nav}<BlogArticleSiteFuir onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleSiteFuir onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-app-sans-developpeur") {
-    return <>{nav}<BlogArticleAppSansDev onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleAppSansDev onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "decouverte-analyse") {
     return <>{nav}<PageDecouverteAnalyse onBack={() => setActivePage(null)} /></>;
@@ -3445,7 +3511,7 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════ SECTION FAQ */}
-      <FaqSection />
+      <FaqSection onNavigate={(p) => setActivePage(p)} />
 
       {/* ══════════════════════════════════════ SECTION 5: CONTACT */}
       <section id="contact" className="relative w-full bg-[#fcfcfc] text-[#111] overflow-hidden">
