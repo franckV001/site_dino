@@ -21,6 +21,12 @@ import {
 
 const base = import.meta.env.BASE_URL;
 
+function setPageMeta(title: string, description: string) {
+  document.title = title;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", description);
+}
+
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
 const chaptersData = [
@@ -410,7 +416,13 @@ const sailinglocImages = [
 ];
 
 function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Projet SailingLoc — FRK-France",
+      "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make."
+    );
+  }, []);
 
   const [detailEmblaRef, detailEmblaApi] = useEmblaCarousel({ loop: true });
   const [detailIndex, setDetailIndex] = useState(0);
@@ -661,7 +673,13 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
 // ─── PROJECT DETAIL: APEX PRO ────────────────────────────────────────────────
 
 function ProjectDetailApex({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Projet Apex Pro — FRK-France",
+      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides."
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
@@ -856,7 +874,13 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
 // ─── PROJECT DETAIL: TARGO ───────────────────────────────────────────────────
 
 function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Projet Targo — FRK-France",
+      "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble."
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
@@ -1050,7 +1074,13 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
 // ─── PROJECT DETAIL: RENAISSANCE AFRIK ──────────────────────────────────────
 
 function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Projet Renaissance Afrik — FRK-France",
+      "Renaissance Afrik — identité visuelle et présence digitale créées par FRK-France pour valoriser l'artisanat et la culture africaine en ligne."
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
@@ -1275,7 +1305,13 @@ function RelatedArticles({ ids, onNavigate }: { ids: string[]; onNavigate: (page
 // ─── BLOG ARTICLE: NO-CODE VS DEV ───────────────────────────────────────────
 
 function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "No-Code vs Développement classique — FRK-France",
+      "No-Code ou développement classique ? Comparez budgets, délais et cas d'usage pour choisir la meilleure approche pour votre projet digital en 2026."
+    );
+  }, []);
 
   const tableRows = [
     { crit: "Budget moyen",        nocode: "1 000 – 8 000 €",  dev: "5 000 – 50 000 €" },
@@ -1477,7 +1513,13 @@ function BlogArticleNocodeVsDev({ onBack, onNavigate }: { onBack: () => void; on
 // ─── BLOG ARTICLE: 5 PROCESSUS ───────────────────────────────────────────────
 
 function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "5 processus à automatiser dans votre PME — FRK-France",
+      "Découvrez 5 processus que toute PME devrait automatiser avec Make, n8n ou Zapier pour gagner des heures par semaine et réduire les erreurs humaines."
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
@@ -1567,7 +1609,13 @@ function BlogArticle5Processus({ onBack, onNavigate }: { onBack: () => void; onN
 // ─── BLOG ARTICLE: IA PRODUCTIVITÉ PME ───────────────────────────────────────
 
 function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Comment l'IA double la productivité de votre équipe — FRK-France",
+      "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code."
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
@@ -1656,7 +1704,13 @@ function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void;
 // ─── BLOG ARTICLE: SITE QUI FAIT FUIR ────────────────────────────────────────
 
 function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "7 erreurs qui font fuir vos visiteurs — FRK-France",
+      "Trop lent, illisible sur mobile, sans CTA clair ? Découvrez les 7 erreurs de site qui font fuir vos visiteurs et comment les corriger rapidement."
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
@@ -1761,7 +1815,13 @@ function BlogArticleSiteFuir({ onBack, onNavigate }: { onBack: () => void; onNav
 // ─── BLOG ARTICLE: APP SANS DÉVELOPPEUR ──────────────────────────────────────
 
 function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Créer une app sans développeur — FRK-France",
+      "Créez votre application web sans coder avec Bubble, Glide ou Softr. Guide pratique, coûts réels et étapes clés pour lancer votre app en 30 jours."
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
@@ -1871,7 +1931,13 @@ function BlogArticleAppSansDev({ onBack, onNavigate }: { onBack: () => void; onN
 // ─── BLOG PAGE ───────────────────────────────────────────────────────────────
 
 function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleClick: (id: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Blog — No-Code, IA et Automatisation — FRK-France",
+      "Tous les articles de FRK-France sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs."
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
@@ -1982,7 +2048,13 @@ function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleCli
 // ─── PAGE: DÉCOUVERTE & ANALYSE ──────────────────────────────────────────────
 
 function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Découverte & Analyse — Notre processus — FRK-France",
+      "FRK-France audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs."
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
@@ -2111,7 +2183,13 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
 // ─── PAGE: ARCHITECTURE & DESIGN ─────────────────────────────────────────────
 
 function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Architecture & Design — Notre processus — FRK-France",
+      "FRK-France conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés."
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
@@ -2195,7 +2273,13 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
 // ─── PAGE: PRODUCTION & BUILD ─────────────────────────────────────────────────
 
 function PageProductionBuild({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Production & Build — Notre processus — FRK-France",
+      "FRK-France développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats."
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
@@ -2279,7 +2363,13 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
 // ─── PAGE: TEST & VALIDATION ──────────────────────────────────────────────────
 
 function PageTestValidation({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Test & Validation — Notre processus — FRK-France",
+      "FRK-France assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital."
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
@@ -2363,7 +2453,13 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
 // ─── PAGE: LANCEMENT & SUIVI ──────────────────────────────────────────────────
 
 function PageLancementSuivi({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Lancement & Suivi — Notre processus — FRK-France",
+      "FRK-France accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital."
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
@@ -2827,6 +2923,15 @@ export default function App() {
   const [showVideo, setShowVideo] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const [activeChapter, setActiveChapter] = useState(2);
+
+  useEffect(() => {
+    if (activePage === null) {
+      setPageMeta(
+        "FRK-France — Agence Digitale",
+        "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs."
+      );
+    }
+  }, [activePage]);
 
   // Video delay
   useEffect(() => {
