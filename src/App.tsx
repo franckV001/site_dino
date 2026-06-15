@@ -31,6 +31,9 @@ function setPageMeta(title: string, description: string, path: string) {
   document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
   document.querySelector('meta[property="og:url"]')?.setAttribute("content", url);
   document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+  document.querySelector('meta[property="og:locale"]')?.setAttribute("content", "fr_FR");
+  document.querySelector('link[rel="alternate"][hreflang="fr"]')?.setAttribute("href", url);
+  document.querySelector('link[rel="alternate"][hreflang="x-default"]')?.setAttribute("href", url);
   history.replaceState(null, "", `/site_dino${path}`);
 }
 
@@ -1433,7 +1436,7 @@ function BlogArticleNocodeVsDev({ onNavigate }: { onBack: () => void; onNavigate
             <h3 className="text-xl font-medium text-white tracking-tight">Parlons de votre projet.</h3>
             <p className="text-gray-400 text-[13px] mt-2">Je vous aide à choisir la bonne approche selon votre contexte.</p>
           </div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
             Me contacter
             <ArrowUpRight size={15} strokeWidth={1.5} />
           </a>
@@ -1528,7 +1531,7 @@ function BlogArticle5Processus({ onNavigate }: { onBack: () => void; onNavigate:
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Passons à l'action</div><h3 className="text-xl font-medium text-white tracking-tight">Audit gratuit de 30 min</h3><p className="text-gray-400 text-[13px] mt-2">J'identifie vos meilleures opportunités d'automatisation.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
       <div className="px-6 md:px-16 max-w-3xl mx-auto">
@@ -1619,7 +1622,7 @@ function BlogArticleIaProductivite({ onNavigate }: { onBack: () => void; onNavig
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Accélérez votre transformation</div><h3 className="text-xl font-medium text-white tracking-tight">Intégrons l'IA dans vos workflows</h3><p className="text-gray-400 text-[13px] mt-2">Workshop demi-journée pour construire vos premiers prompts d'entreprise.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
       <div className="px-6 md:px-16 max-w-3xl mx-auto">
@@ -1726,7 +1729,7 @@ function BlogArticleSiteFuir({ onNavigate }: { onBack: () => void; onNavigate: (
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Audit offert</div><h3 className="text-xl font-medium text-white tracking-tight">Votre site perd des clients en ce moment</h3><p className="text-gray-400 text-[13px] mt-2">Audit UX complet + rapport d'actions priorisées sous 48h.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
       <div className="px-6 md:px-16 max-w-3xl mx-auto">
@@ -1838,7 +1841,7 @@ function BlogArticleAppSansDev({ onNavigate }: { onBack: () => void; onNavigate:
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Accélérez le process</div><h3 className="text-xl font-medium text-white tracking-tight">Votre app lancée en 30 jours</h3><p className="text-gray-400 text-[13px] mt-2">Conception, architecture No-Code, et lancement — je vous accompagne.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
       <div className="px-6 md:px-16 max-w-3xl mx-auto">
@@ -2072,7 +2075,7 @@ function PageDecouverteAnalyse({}: { onBack: () => void }) {
           Architecture &amp; Design
         </h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Une fois le cadrage validé, on conçoit la structure et l'interface de votre solution.</p>
-        <a href="mailto:franck@fkr-france.fr"
+        <a href="mailto:franckviator@gmail.com"
           className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet
           <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -2158,7 +2161,7 @@ function PageArchitectureDesign({}: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Production &amp; Build</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Les maquettes validées, on passe à la production et au développement de votre solution.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2242,7 +2245,7 @@ function PageProductionBuild({}: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Test &amp; Validation</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Avant de lancer, on teste chaque fonctionnalité pour garantir une mise en production sans accroc.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2326,7 +2329,7 @@ function PageTestValidation({}: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Lancement &amp; Suivi</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Tests validés — on met en ligne et on assure le suivi post-lancement.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2410,7 +2413,7 @@ function PageLancementSuivi({}: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Prêt à démarrer ?</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Parlons de votre projet</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Découverte, design, build, tests, lancement — on gère tout de A à Z.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Me contacter<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2563,7 +2566,7 @@ function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-[13px] text-gray-400 mb-4">Vous avez une question spécifique ?</p>
           <a
-            href="mailto:franck@fkr-france.fr"
+            href="mailto:franckviator@gmail.com"
             className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.15em] uppercase text-[#111] hover:text-gray-500 transition-colors duration-200"
           >
             Écrire un message <ArrowUpRight size={14} strokeWidth={1.5} />
@@ -2828,7 +2831,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
             <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Agence Digitale<br />Paris, France</span>
             <div className="flex flex-col gap-1 mt-2">
               <a href="mailto:franckviator@gmail.com" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">franckviator@gmail.com</a>
-              <span className="text-[11px] font-mono text-gray-500">06 50 13 58 57</span>
+              <a href="tel:+33650135857" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">+33 6 50 13 58 57</a>
             </div>
           </div>
 
@@ -3901,11 +3904,11 @@ export default function App() {
 
               {/* Email CTA */}
               <a
-                href="mailto:franck@fkr-france.fr"
+                href="mailto:franckviator@gmail.com"
                 className="group inline-flex items-center gap-4 mb-10"
               >
                 <span className="text-[1rem] md:text-[1.25rem] font-mono tracking-tight text-gray-500 group-hover:text-[#111] transition-colors duration-300 underline underline-offset-4 decoration-gray-300 group-hover:decoration-[#111]">
-                  franck@fkr-france.fr
+                  franckviator@gmail.com
                 </span>
                 <span className="w-9 h-9 rounded-full bg-[#111] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <ArrowUpRight size={15} strokeWidth={1.5} className="text-white" />
