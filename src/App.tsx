@@ -2533,29 +2533,85 @@ function FaqSection() {
   );
 }
 
-function SiteFooter() {
+function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
+  const scrollTo = (id: string) => {
+    if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-[#0a0a0a] text-white">
-      <div className="px-6 md:px-16 py-10 md:py-14 max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div className="flex flex-col gap-1">
-          <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
-          <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Agence Digitale</span>
+      {/* Plan du site */}
+      <div className="px-6 md:px-16 pt-14 md:pt-20 pb-10 max-w-6xl mx-auto">
+        <p className="text-[9px] font-mono tracking-[0.25em] uppercase text-gray-600 mb-10">Plan du site</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-12 border-b border-white/10">
+
+          {/* Colonne 1 — Brand */}
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+            <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
+            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Agence Digitale<br />Paris, France</span>
+            <div className="flex flex-col gap-1 mt-2">
+              <a href="mailto:franckviator@gmail.com" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">franckviator@gmail.com</a>
+              <span className="text-[11px] font-mono text-gray-500">06 50 13 58 57</span>
+            </div>
+          </div>
+
+          {/* Colonne 2 — Navigation */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Navigation</p>
+            {[
+              { label: "Accueil",   action: () => scrollTo("top") },
+              { label: "Expertise", action: () => scrollTo("expertise") },
+              { label: "Projets",   action: () => scrollTo("projets") },
+              { label: "Processus", action: () => scrollTo("processus") },
+              { label: "Blog",      action: () => onNavigate?.("blog") },
+              { label: "Contact",   action: () => scrollTo("contact") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Colonne 3 — Projets */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Projets</p>
+            {[
+              { label: "Site e-commerce",     action: () => onNavigate?.("p1") },
+              { label: "Site vitrine Apex",    action: () => onNavigate?.("p2") },
+              { label: "Animation IA",         action: () => onNavigate?.("p3") },
+              { label: "Automatisation CRM",   action: () => scrollTo("projets") },
+              { label: "Dashboard Analytics",  action: () => scrollTo("projets") },
+              { label: "Site vitrine Targo",   action: () => onNavigate?.("p6") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Colonne 4 — Blog */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Blog</p>
+            {[
+              { label: "No-Code vs Développement",   action: () => onNavigate?.("blog-nocode-vs-dev") },
+              { label: "5 processus à automatiser",   action: () => onNavigate?.("blog-5-processus-automatiser") },
+              { label: "IA & Productivité PME",       action: () => onNavigate?.("blog-ia-productivite-pme") },
+              { label: "Site qui fait fuir",           action: () => onNavigate?.("blog-site-qui-fait-fuir") },
+              { label: "App sans développeur",        action: () => onNavigate?.("blog-app-sans-developpeur") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-mono tracking-[0.15em] uppercase text-gray-400">
-          {[
-            { label: "Accueil",   id: "top" },
-            { label: "Expertise", id: "expertise" },
-            { label: "Projets",   id: "projets" },
-            { label: "Processus", id: "processus" },
-            { label: "Contact",   id: "contact" },
-          ].map(({ label, id }) => (
-            <button key={label} onClick={() => {
-              if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
-              else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-            }} className="hover:text-white transition-colors duration-200">{label}</button>
-          ))}
-        </nav>
-        <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRK-France</div>
+
+        {/* Copyright */}
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRK-France — Tous droits réservés</div>
+          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">Solution No Code · Paris, France</div>
+        </div>
       </div>
     </footer>
   );
@@ -3497,36 +3553,7 @@ export default function App() {
         </div>
 
         {/* ── FOOTER ── */}
-        <footer className="border-t border-gray-200 bg-[#0a0a0a] text-white">
-          <div className="px-6 md:px-16 py-10 md:py-14 max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-
-            {/* Brand */}
-            <div className="flex flex-col gap-1">
-              <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
-              <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Agence Digitale</span>
-            </div>
-
-            {/* Nav links */}
-            <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-mono tracking-[0.15em] uppercase text-gray-400">
-              {[
-                { label: "Accueil", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-                { label: "Expertise", action: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Projets", action: () => document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Processus", action: () => document.getElementById("processus")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Contact", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
-              ].map(({ label, action }) => (
-                <button key={label} onClick={action} className="hover:text-white transition-colors duration-200">
-                  {label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Copyright */}
-            <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">
-              © 2026 FRK-France
-            </div>
-          </div>
-        </footer>
+        <SiteFooter onNavigate={(p) => setActivePage(p)} />
 
       </section>
     </div>
