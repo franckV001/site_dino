@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://franckv001.github.io/site_dino/sitemap.xml

@@ -1148,7 +1148,8 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
             <iframe
               src="https://www.youtube.com/embed/gYeV3tKIgSQ"
               title="Renaissance Afrik — Animation IA"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              sandbox="allow-scripts allow-same-origin allow-presentation"
               allowFullScreen
               className="w-full h-full"
             />
