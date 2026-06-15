@@ -1,4 +1,34 @@
+# FRK-France — Agence Digitale
+# https://franckv001.github.io/site_dino/
+
+# Autoriser tous les moteurs de recherche
 User-agent: *
 Allow: /
 
+# Bloquer les dossiers inutiles à indexer
+Disallow: /processus/
+Disallow: /video/
+Disallow: /carrouselle/
+Disallow: /index_2/
+Disallow: /index_6/
+Disallow: /index__3/
+Disallow: /Index/
+
+# Bloquer les bots de scraping agressifs
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Sitemap
 Sitemap: https://franckv001.github.io/site_dino/sitemap.xml
