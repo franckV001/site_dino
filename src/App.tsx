@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import BoxLoader from "./components/ui/box-loader";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   motion,
@@ -3037,6 +3038,7 @@ export default function App() {
   const [activePage, setActivePage] = useState<string | null>(null);
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const [activeChapter, setActiveChapter] = useState(2);
 
@@ -3157,7 +3159,10 @@ export default function App() {
       {nav}
 
       {/* ═══════════════════════════════════════════════════════ SECTION 1: HERO */}
-      <section className="relative w-full h-screen flex flex-col overflow-hidden">
+      <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#111]">
+
+        {/* Dark base — always visible, ensures white text is readable before video */}
+        <div className="absolute inset-0 bg-[#111] z-0" />
 
         {/* 1D — Background Video */}
         <AnimatePresence>
@@ -3167,13 +3172,14 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
-              className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
+              className="absolute top-0 left-0 w-full h-full pointer-events-none z-[1]"
             >
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
+                onCanPlay={() => setVideoReady(true)}
                 className="w-full h-full object-cover"
               >
                 <source
@@ -3181,6 +3187,22 @@ export default function App() {
                   type="video/mp4"
                 />
               </video>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Box Loader — visible while video hasn't started playing */}
+        <AnimatePresence>
+          {!videoReady && (
+            <motion.div
+              key="hero-loader"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.8 } }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none"
+            >
+              <BoxLoader />
             </motion.div>
           )}
         </AnimatePresence>
