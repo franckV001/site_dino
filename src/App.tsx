@@ -16,6 +16,7 @@ import {
   TrendingUp,
   FlaskConical,
   Bot,
+  Phone,
 } from "lucide-react";
 
 const base = import.meta.env.BASE_URL;
@@ -2944,7 +2945,7 @@ export default function App() {
         </motion.header>
 
         {/* Hero body: left + right sidebars */}
-        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-10 sm:mt-14 md:mt-16 pb-24 md:pb-0 z-10 flex-1">
+        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-1 sm:mt-2 md:mt-2 pb-24 md:pb-0 z-10 flex-1">
 
           {/* 1E — Left Sidebar */}
           <motion.div
@@ -2985,11 +2986,11 @@ export default function App() {
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6 flex flex-col gap-3"
+              className="mb-6 flex flex-row items-center gap-4"
             >
               <button
                 onClick={() => setShowPhone(v => !v)}
-                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300 w-fit"
+                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300 w-fit shrink-0"
               >
                 Contactez-nous
                 <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -2998,13 +2999,14 @@ export default function App() {
                 {showPhone && (
                   <motion.a
                     href="tel:0650135857"
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-5 py-2.5 rounded-md text-[15px] font-mono tracking-widest w-fit hover:bg-white/20 transition-colors duration-200"
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-3 rounded-md text-[14px] font-mono tracking-widest hover:bg-white/20 transition-colors duration-200 whitespace-nowrap"
                   >
-                    📞 06 50 13 58 57
+                    <Phone size={15} strokeWidth={2} className="text-[#f97316]" />
+                    06 50 13 58 57
                   </motion.a>
                 )}
               </AnimatePresence>
