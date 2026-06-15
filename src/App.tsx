@@ -3176,7 +3176,7 @@ export default function App() {
             className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160vw] md:w-[1000px] pointer-events-none"
           >
             <motion.img
-              src="https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779625001/ChatGPT_Image_May_23_2026_12_24_44_PM_1_lv1dne.png"
+              src={`${base}Pterodactyle.webp`}
               alt="Pterodactyl"
               className="w-full"
               animate={{
