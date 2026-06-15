@@ -2701,6 +2701,7 @@ export default function App() {
   const [activePage, setActivePage] = useState<string | null>(null);
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
   const [activeChapter, setActiveChapter] = useState(2);
 
   // Video delay
@@ -2971,19 +2972,42 @@ export default function App() {
               AGENCE<br />DIGITALE
             </motion.h2>
 
+            {/* Slogan */}
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-[11px] font-mono tracking-[0.25em] uppercase text-white/60 mb-6"
+            >
+              Solution No Code
+            </motion.p>
+
             {/* CTA Contactez-nous */}
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6"
+              className="mb-6 flex flex-col gap-3"
             >
-              <a
-                href="mailto:franckviator@gmail.com"
-                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300"
+              <button
+                onClick={() => setShowPhone(v => !v)}
+                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300 w-fit"
               >
                 Contactez-nous
                 <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              </button>
+              <AnimatePresence>
+                {showPhone && (
+                  <motion.a
+                    href="tel:0650135857"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-5 py-2.5 rounded-md text-[15px] font-mono tracking-widest w-fit hover:bg-white/20 transition-colors duration-200"
+                  >
+                    📞 06 50 13 58 57
+                  </motion.a>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             {/* Description */}
