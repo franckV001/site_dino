@@ -443,7 +443,7 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Projet SailingLoc — FRK-France",
+      "SailingLoc — Réservation de Voiliers · FRK",
       "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make.",
       "/projets/sailingloc/"
     );
@@ -701,7 +701,7 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Projet Apex Pro — FRK-France",
+      "Apex Pro — Coaching Sportif · FRK-France",
       "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides.",
       "/projets/apex-pro/"
     );
@@ -903,7 +903,7 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Projet Targo — FRK-France",
+      "Targo — Application No-Code · FRK-France",
       "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble.",
       "/projets/targo/"
     );
@@ -1642,7 +1642,7 @@ function BlogArticleIaProductivite({ onBack, onNavigate }: { onBack: () => void;
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Comment l'IA double la productivité de votre équipe — FRK-France",
+      "L'IA double votre productivité — FRK-France",
       "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code.",
       "/blog/ia-productivite-pme/"
     );
@@ -2966,7 +2966,7 @@ export default function App() {
   useEffect(() => {
     if (activePage === null) {
       setPageMeta(
-        "FRK-France — Agence Digitale",
+        "FRK-France — Design Web, No-Code & IA",
         "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs.",
         "/"
       );
