@@ -32,3 +32,6 @@ Disallow: /
 
 # Sitemap
 Sitemap: https://franckv001.github.io/site_dino/sitemap.xml
+
+# LLMs
+LLMs: https://franckv001.github.io/site_dino/llms.txt

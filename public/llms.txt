@@ -1,0 +1,47 @@
+# FRK-France
+
+> Agence digitale à Paris spécialisée en design web, développement No-Code et automatisation IA. Solutions sur-mesure pour PME et entrepreneurs.
+
+FRK-France accompagne les entreprises dans leur transformation digitale : création de sites web modernes, applications No-Code (Webflow, Bubble), automatisation de processus métier (Make, n8n) et intégration d'outils IA. Fondée en 2024, l'agence intervient sur l'ensemble du cycle projet — du cadrage au suivi post-lancement.
+
+## Services
+
+- Design Web : Conception et intégration de sites web modernes, responsives et orientés conversion.
+- Développement No-Code : Applications web et sites sans code avec Webflow, Bubble, Weweb.
+- Automatisation IA : Automatisation de processus métier avec Make, n8n et intégration d'outils IA (ChatGPT, Claude, Copilot).
+- Stratégie Digitale : Audit, conseil et accompagnement pour accélérer la croissance digitale.
+
+## Pages principales
+
+- [Accueil](https://franckv001.github.io/site_dino/): Présentation de l'agence, services, projets, processus et contact.
+- [Blog](https://franckv001.github.io/site_dino/blog/): Articles sur le No-Code, l'automatisation et l'IA à destination des PME.
+
+## Articles de blog
+
+- [No-Code vs Développement classique](https://franckv001.github.io/site_dino/blog/nocode-vs-dev/): Comparatif budgets, délais et cas d'usage pour choisir la bonne approche.
+- [5 processus à automatiser dans votre PME](https://franckv001.github.io/site_dino/blog/5-processus-automatiser/): Make, n8n et Zapier appliqués aux tâches répétitives les plus courantes.
+- [L'IA double votre productivité](https://franckv001.github.io/site_dino/blog/ia-productivite-pme/): Guide pratique pour intégrer ChatGPT, Claude et Copilot dans les workflows PME.
+- [7 erreurs qui font fuir vos visiteurs](https://franckv001.github.io/site_dino/blog/site-qui-fait-fuir/): Analyse UX des erreurs de site les plus fréquentes et comment les corriger.
+- [Créer une app sans développeur](https://franckv001.github.io/site_dino/blog/app-sans-developpeur/): Guide No-Code avec Bubble, Glide et Softr pour lancer une app en 30 jours.
+
+## Projets réalisés
+
+- [SailingLoc](https://franckv001.github.io/site_dino/projets/sailingloc/): Plateforme de réservation de voiliers — Webflow, intégration paiement, automatisation Make.
+- [Apex Pro](https://franckv001.github.io/site_dino/projets/apex-pro/): Site vitrine premium pour agence de coaching sportif — design moderne, animations fluides.
+- [Renaissance Afrik](https://franckv001.github.io/site_dino/projets/renaissance-afrik/): Identité visuelle et présence digitale pour valoriser l'artisanat et la culture africaine.
+- [Targo](https://franckv001.github.io/site_dino/projets/targo/): Application No-Code de mise en relation et gestion de profils professionnels — Bubble.
+
+## Processus de travail
+
+- [Découverte & Analyse](https://franckv001.github.io/site_dino/processus/decouverte-analyse/): Audit des besoins, analyse de l'existant, cadrage et définition des objectifs.
+- [Architecture & Design](https://franckv001.github.io/site_dino/processus/architecture-design/): Wireframing, choix des outils, conception de la structure digitale.
+- [Production & Build](https://franckv001.github.io/site_dino/processus/production-build/): Développement, intégration, automatisation et livraison itérative.
+- [Test & Validation](https://franckv001.github.io/site_dino/processus/test-validation/): Recette fonctionnelle, tests UX et corrections avant mise en production.
+- [Lancement & Suivi](https://franckv001.github.io/site_dino/processus/lancement-suivi/): Mise en ligne, suivi post-lancement et maintenance continue.
+
+## Contact
+
+- Email : franckviator@gmail.com
+- Téléphone : +33 6 50 13 58 57
+- Localisation : Paris, France
+- GitHub : https://github.com/franckV001
