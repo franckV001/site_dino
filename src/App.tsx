@@ -48,6 +48,7 @@ const PATH_TO_PAGE: Record<string, string> = {
   "/projets/apex-pro/":          "p2",
   "/projets/renaissance-afrik/": "p3",
   "/projets/targo/":             "p6",
+  "/projets/manga/":             "p7",
   "/processus/decouverte-analyse/":   "decouverte-analyse",
   "/processus/architecture-design/":  "architecture-design",
   "/processus/production-build/":     "production-build",
@@ -275,6 +276,14 @@ const projectsData = [
     url: "https://franckv001.github.io/targo-website-/",
     image: `${base}index_6/targo_card.webp`,
   },
+  {
+    id: "p7",
+    title: "Site vitrine Manga",
+    category: "Design Web",
+    summary: "Conception et développement d'un site vitrine thématique dédié à l'univers manga. Interface immersive et navigation fluide.",
+    url: "https://franckv001.github.io/site-manga/",
+    image: `${base}index_7/manga.jpg`,
+  },
 ];
 
 // ─── PROJECTS SECTION ─────────────────────────────────────────────────────────
@@ -368,8 +377,8 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
               className="min-w-0 shrink-0 grow-0 w-[80vw] sm:w-[55vw] md:w-[400px] lg:w-[440px]"
             >
               <a
-                href={["p1","p2","p3","p6"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
-                onClick={(e) => { if (["p1","p2","p3","p6"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
+                href={["p1","p2","p3","p6","p7"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
+                onClick={(e) => { if (["p1","p2","p3","p6","p7"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
                 className="group block cursor-pointer"
               >
                 {/* Image */}
@@ -1027,6 +1036,184 @@ function ProjectDetailTargo({}: { onBack: () => void }) {
         </h2>
         <a
           href="https://franckv001.github.io/targo-website-/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300"
+        >
+          Visiter le projet
+          <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </motion.section>
+      <SiteFooter />
+    </div>
+  );
+}
+
+// ─── PROJECT DETAIL: MANGA ───────────────────────────────────────────────────
+
+function ProjectDetailManga({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Site vitrine Manga · FRK-France",
+      "Site vitrine thématique dédié à l'univers manga, développé en HTML, CSS et JavaScript par FRK-France.",
+      "/projets/manga/"
+    );
+  }, []);
+
+  return (
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
+
+      {/* Hero image */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-50 overflow-hidden"
+      >
+        <img
+          src={`${base}index_7/manga.jpg`}
+          alt="Site vitrine Manga"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Main content */}
+      <div className="px-6 md:px-16 max-w-5xl mx-auto">
+
+        {/* Title block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="py-12 md:py-20 border-b border-gray-200"
+        >
+          <div className="flex items-center gap-3 text-[10px] font-mono tracking-[0.2em] uppercase mb-6">
+            <span className="text-gray-400">[ Design Web ]</span>
+            <span className="w-8 h-[1px] bg-gray-300 block" />
+            <span className="text-gray-400">2026</span>
+          </div>
+          <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] font-medium tracking-tight leading-[1] mb-8">
+            Site vitrine<br />Manga
+          </h1>
+          <p className="text-[15px] md:text-[17px] text-gray-600 leading-[1.8] max-w-2xl">
+            Conception et développement d'un site vitrine thématique dédié à l'univers manga.
+            Une interface immersive avec une identité visuelle forte et une navigation fluide,
+            pensée pour les passionnés du genre.
+          </p>
+        </motion.div>
+
+        {/* Metadata */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200"
+        >
+          {[
+            { label: "Client",      value: "Projet personnel" },
+            { label: "Année",       value: "2026" },
+            { label: "Services",    value: "Design Web" },
+            { label: "Technologie", value: "HTML / CSS / JS" },
+          ].map(({ label, value }) => (
+            <div key={label}>
+              <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-2">{label}</div>
+              <div className="text-[14px] font-medium">{value}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Le défi */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.32 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-8">Le défi</div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Créer un site vitrine capable de retranscrire l'énergie visuelle et l'ambiance
+              propres à l'univers manga, sans recourir à un framework ni à un outil no-code.
+            </p>
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Le défi principal : livrer une expérience rapide et soignée en HTML, CSS et
+              JavaScript natifs, tout en gardant un code simple à maintenir et à faire évoluer.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Mon rôle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.38 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-8">Mon rôle</div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                num: "01",
+                title: "Design & Direction artistique",
+                desc: "Choix de la palette, de la typographie et de la mise en page pour refléter l'univers manga.",
+              },
+              {
+                num: "02",
+                title: "Développement Front",
+                desc: "Intégration complète en HTML, CSS et JavaScript vanilla — sans framework ni dépendance.",
+              },
+              {
+                num: "03",
+                title: "Mise en ligne",
+                desc: "Déploiement sur GitHub Pages, tests cross-navigateurs et optimisation avant livraison.",
+              },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="flex flex-col gap-3">
+                <span className="text-[10px] font-mono text-gray-400">{num}</span>
+                <h4 className="text-[15px] font-medium tracking-tight text-[#111]">{title}</h4>
+                <p className="text-[13px] text-gray-500 leading-[1.7]">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Results */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.44 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-10">Résultats</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            {[
+              { stat: "100 %", desc: "HTML / CSS / JS natif" },
+              { stat: "<2 s",  desc: "temps de chargement" },
+              { stat: "2026",  desc: "projet livré" },
+            ].map(({ stat, desc }) => (
+              <div key={stat}>
+                <div className="text-[3rem] md:text-[4rem] font-medium tracking-tight leading-none mb-3">{stat}</div>
+                <div className="text-[11px] font-mono uppercase tracking-widest text-gray-500">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Dark CTA */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.5 }}
+        className="mt-16 md:mt-24 bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32 flex flex-col items-center text-center"
+      >
+        <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Projet en ligne</div>
+        <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-10 max-w-xl">
+          Voir le site Manga en ligne
+        </h2>
+        <a
+          href="https://franckv001.github.io/site-manga/"
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300"
@@ -3117,6 +3304,9 @@ export default function App() {
   }
   if (activePage === "p6") {
     return <>{nav}<ProjectDetailTargo onBack={() => setActivePage(null)} /></>;
+  }
+  if (activePage === "p7") {
+    return <>{nav}<ProjectDetailManga onBack={() => setActivePage(null)} /></>;
   }
   if (activePage === "blog") {
     return <>{nav}<BlogPage onBack={() => setActivePage(null)} onArticleClick={(id) => setActivePage(`blog-${id}`)} /></>;
