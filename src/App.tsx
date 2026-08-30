@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import BoxLoader from "./components/ui/box-loader";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   motion,
@@ -16,16 +17,54 @@ import {
   TrendingUp,
   FlaskConical,
   Bot,
+  Phone,
 } from "lucide-react";
+
+const base = import.meta.env.BASE_URL;
+
+const SITE = "https://franckv001.github.io/site_dino";
+
+function setPageMeta(title: string, description: string, path: string) {
+  const url = `${SITE}${path}`;
+  document.title = title;
+  document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+  document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
+  document.querySelector('meta[property="og:url"]')?.setAttribute("content", url);
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+  document.querySelector('meta[property="og:locale"]')?.setAttribute("content", "fr_FR");
+  document.querySelector('link[rel="alternate"][hreflang="fr"]')?.setAttribute("href", url);
+  document.querySelector('link[rel="alternate"][hreflang="x-default"]')?.setAttribute("href", url);
+  history.replaceState(null, "", `/site_dino${path}`);
+}
+
+const PATH_TO_PAGE: Record<string, string> = {
+  "/blog/":                      "blog",
+  "/blog/nocode-vs-dev/":        "blog-nocode-vs-dev",
+  "/blog/5-processus-automatiser/": "blog-5-processus-automatiser",
+  "/blog/ia-productivite-pme/":  "blog-ia-productivite-pme",
+  "/blog/site-qui-fait-fuir/":   "blog-site-qui-fait-fuir",
+  "/blog/app-sans-developpeur/": "blog-app-sans-developpeur",
+  "/projets/sailingloc/":        "p1",
+  "/projets/apex-pro/":          "p2",
+  "/projets/renaissance-afrik/": "p3",
+  "/projets/targo/":             "p6",
+  "/projets/manga/":             "p7",
+  "/processus/decouverte-analyse/":   "decouverte-analyse",
+  "/processus/architecture-design/":  "architecture-design",
+  "/processus/production-build/":     "production-build",
+  "/processus/test-validation/":      "test-validation",
+  "/processus/lancement-suivi/":      "lancement-suivi",
+  "/a-propos/":                       "a-propos",
+};
 
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
 const chaptersData = [
-  { name: "Découverte & Analyse", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624247/01_udnber.png", description: "Audit de vos besoins, analyse de l'existant, cadrage du projet et définition des objectifs clés." },
-  { name: "Architecture & Design", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624374/02_pmvxxl.png", description: "Conception de la structure digitale, wireframing, choix des outils no-code ou dev selon le contexte." },
-  { name: "Production & Build", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624236/03_hcp3jc.png", description: "Développement, intégration et automatisation. Livraison rapide avec itérations continues." },
-  { name: "Test & Validation", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624256/04_get63z.png", description: "Recette fonctionnelle, tests UX, corrections et validation avant mise en production." },
-  { name: "Lancement & Suivi", image: "https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779624251/05_kz1tyu.png", description: "Mise en ligne, monitoring des performances et accompagnement post-livraison." },
+  { name: "Découverte & Analyse", image: `${base}processus/01_decouverte.webp`, description: "Audit de vos besoins, analyse de l'existant, cadrage du projet et définition des objectifs clés." },
+  { name: "Architecture & Design", image: `${base}processus/02_architecture.webp`, description: "Conception de la structure digitale, wireframing, choix des outils no-code ou dev selon le contexte." },
+  { name: "Production & Build", image: `${base}processus/03_production.webp`, description: "Développement, intégration et automatisation. Livraison rapide avec itérations continues." },
+  { name: "Test & Validation", image: `${base}processus/04_test.webp`, description: "Recette fonctionnelle, tests UX, corrections et validation avant mise en production." },
+  { name: "Lancement & Suivi", image: `${base}processus/05_lancement.webp`, description: "Mise en ligne, monitoring des performances et accompagnement post-livraison." },
 ];
 
 // ─── ANIMATION VARIANTS ──────────────────────────────────────────────────────
@@ -193,7 +232,7 @@ const projectsData = [
     tags: ["Design Web", "No Code", "Marketing Digital", "IA", "Branding", "Test Application"],
     summary: "Redesign complet avec intégration Webflow et automatisation des commandes via Make. Résultat : +40 % de conversions.",
     url: "#",
-    image: "/Index/sailingloc.webp",
+    image: `${base}Index/sailingloc.webp`,
   },
   {
     id: "p2",
@@ -202,7 +241,7 @@ const projectsData = [
     tags: ["Design Web", "No Code"],
     summary: "Conception et développement d'un site vitrine immersif pour Apex Pro, spécialiste des exosquelettes de nouvelle génération.",
     url: "https://apex-pro-sigma.vercel.app",
-    image: "/index_2/apex.webp?v=2",
+    image: `${base}index_2/apex.webp?v=2`,
     objectPosition: "right",
   },
   {
@@ -211,7 +250,7 @@ const projectsData = [
     category: "No Code & IA",
     summary: "Création d'animations générées par intelligence artificielle — personnages, environnements et séquences visuelles produits entièrement avec des outils IA.",
     url: "https://youtu.be/gYeV3tKIgSQ",
-    image: "/index__3/hero_rennaissance_afrik.webp",
+    image: `${base}index__3/hero_rennaissance_afrik.webp`,
   },
   {
     id: "p4",
@@ -235,7 +274,15 @@ const projectsData = [
     category: "Design Web",
     summary: "Conception d'un site vitrine moderne pour Targo, service de transport rapide et simple. Interface claire, épurée et orientée conversion.",
     url: "https://franckv001.github.io/targo-website-/",
-    image: "/index_6/targo_card.webp",
+    image: `${base}index_6/targo_card.webp`,
+  },
+  {
+    id: "p7",
+    title: "Site vitrine Manga",
+    category: "Design Web",
+    summary: "Conception et développement d'un site vitrine thématique dédié à l'univers manga. Interface immersive et navigation fluide.",
+    url: "https://franckv001.github.io/site-manga/",
+    image: `${base}index_7/manga.jpg`,
   },
 ];
 
@@ -330,8 +377,8 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
               className="min-w-0 shrink-0 grow-0 w-[80vw] sm:w-[55vw] md:w-[400px] lg:w-[440px]"
             >
               <a
-                href={["p1","p2","p3","p6"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
-                onClick={(e) => { if (["p1","p2","p3","p6"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
+                href={["p1","p2","p3","p6","p7"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
+                onClick={(e) => { if (["p1","p2","p3","p6","p7"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
                 className="group block cursor-pointer"
               >
                 {/* Image */}
@@ -395,19 +442,26 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
 // ─── PROJECT DETAIL PAGE ─────────────────────────────────────────────────────
 
 const sailinglocImages = [
-  { src: "/carrouselle/hero_sailingLoc.webp?v=9", alt: "Hero — SailingLoc", contain: true },
-  { src: "/carrouselle/back_office_sailingLoc.webp?v=9", alt: "Back office — SailingLoc", contain: true },
-  { src: "/carrouselle/tableau_de_boord_sailig_Loc.webp?v=9", alt: "Tableau de bord — SailingLoc", contain: true },
-  { src: "/carrouselle/sauvegarde_sailingloc.webp?v=9", alt: "Sauvegarde — SailingLoc", contain: true },
-  { src: "/carrouselle/location_sailingloc.webp?v=9", alt: "Location — SailingLoc", contain: true },
-  { src: "/carrouselle/flyers.webp?v=9", alt: "Flyers — SailingLoc", contain: true },
-  { src: "/carrouselle/logotype_sailingloc.webp?v=9", alt: "Logotype — SailingLoc", contain: true },
-  { src: "/carrouselle/moodbard_sailingloc.webp?v=9", alt: "Moodboard — SailingLoc", contain: true },
-  { src: "/carrouselle/affiche_street_sailingloc.webp?v=9", alt: "Affiche street — SailingLoc", contain: true },
+  { src: `${base}carrouselle/hero_sailingLoc.webp?v=9`, alt: "Hero — SailingLoc", contain: true },
+  { src: `${base}carrouselle/back_office_sailingLoc.webp?v=9`, alt: "Back office — SailingLoc", contain: true },
+  { src: `${base}carrouselle/tableau_de_boord_sailig_Loc.webp?v=9`, alt: "Tableau de bord — SailingLoc", contain: true },
+  { src: `${base}carrouselle/sauvegarde_sailingloc.webp?v=9`, alt: "Sauvegarde — SailingLoc", contain: true },
+  { src: `${base}carrouselle/location_sailingloc.webp?v=9`, alt: "Location — SailingLoc", contain: true },
+  { src: `${base}carrouselle/flyers.webp?v=9`, alt: "Flyers — SailingLoc", contain: true },
+  { src: `${base}carrouselle/logotype_sailingloc.webp?v=9`, alt: "Logotype — SailingLoc", contain: true },
+  { src: `${base}carrouselle/moodbard_sailingloc.webp?v=9`, alt: "Moodboard — SailingLoc", contain: true },
+  { src: `${base}carrouselle/affiche_street_sailingloc.webp?v=9`, alt: "Affiche street — SailingLoc", contain: true },
 ];
 
-function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function ProjectDetailSailingloc({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "SailingLoc — Réservation de Voiliers · FRK",
+      "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make.",
+      "/projets/sailingloc/"
+    );
+  }, []);
 
   const [detailEmblaRef, detailEmblaApi] = useEmblaCarousel({ loop: true });
   const [detailIndex, setDetailIndex] = useState(0);
@@ -421,27 +475,6 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://franckvsailingloc2.netlify.app/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
 
       {/* Hero carousel */}
       <motion.div
@@ -657,44 +690,30 @@ function ProjectDetailSailingloc({ onBack }: { onBack: () => void }) {
 
 // ─── PROJECT DETAIL: APEX PRO ────────────────────────────────────────────────
 
-function ProjectDetailApex({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function ProjectDetailApex({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Apex Pro — Coaching Sportif · FRK-France",
+      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides.",
+      "/projets/apex-pro/"
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://apex-pro-sigma.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
 
       {/* Hero image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-900 overflow-hidden"
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#f0f2f5] overflow-hidden"
       >
         <img
-          src="/index_2/apex_hero.webp?v=2"
+          src={`${base}index_2/apex_hero.webp?v=2`}
           alt="Site vitrine Apex Pro"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover object-top"
         />
       </motion.div>
 
@@ -852,32 +871,18 @@ function ProjectDetailApex({ onBack }: { onBack: () => void }) {
 
 // ─── PROJECT DETAIL: TARGO ───────────────────────────────────────────────────
 
-function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function ProjectDetailTargo({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Targo — Application No-Code · FRK-France",
+      "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble.",
+      "/projets/targo/"
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://franckv001.github.io/targo-website-/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Visiter le site
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
 
       {/* Hero image */}
       <motion.div
@@ -887,7 +892,7 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
         className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-50 overflow-hidden"
       >
         <img
-          src="/index_6/targo.webp"
+          src={`${base}index_6/targo.webp`}
           alt="Site vitrine Targo"
           className="w-full h-full object-cover"
         />
@@ -1044,46 +1049,210 @@ function ProjectDetailTargo({ onBack }: { onBack: () => void }) {
   );
 }
 
-// ─── PROJECT DETAIL: RENAISSANCE AFRIK ──────────────────────────────────────
+// ─── PROJECT DETAIL: MANGA ───────────────────────────────────────────────────
 
-function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function ProjectDetailManga({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Site vitrine Manga · FRK-France",
+      "Site vitrine thématique dédié à l'univers manga, développé en HTML, CSS et JavaScript par FRK-France.",
+      "/projets/manga/"
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Fixed header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <a
-          href="https://youtu.be/gYeV3tKIgSQ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
-        >
-          Voir la vidéo
-          <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </header>
 
       {/* Hero image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#0a0a0a] overflow-hidden"
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-50 overflow-hidden"
       >
         <img
-          src="/index__3/hero_rennaissance_afrik.webp"
+          src={`${base}index_7/manga.jpg`}
+          alt="Site vitrine Manga"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Main content */}
+      <div className="px-6 md:px-16 max-w-5xl mx-auto">
+
+        {/* Title block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="py-12 md:py-20 border-b border-gray-200"
+        >
+          <div className="flex items-center gap-3 text-[10px] font-mono tracking-[0.2em] uppercase mb-6">
+            <span className="text-gray-400">[ Design Web ]</span>
+            <span className="w-8 h-[1px] bg-gray-300 block" />
+            <span className="text-gray-400">2026</span>
+          </div>
+          <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] font-medium tracking-tight leading-[1] mb-8">
+            Site vitrine<br />Manga
+          </h1>
+          <p className="text-[15px] md:text-[17px] text-gray-600 leading-[1.8] max-w-2xl">
+            Conception et développement d'un site vitrine thématique dédié à l'univers manga.
+            Une interface immersive avec une identité visuelle forte et une navigation fluide,
+            pensée pour les passionnés du genre.
+          </p>
+        </motion.div>
+
+        {/* Metadata */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200"
+        >
+          {[
+            { label: "Client",      value: "Projet personnel" },
+            { label: "Année",       value: "2026" },
+            { label: "Services",    value: "Design Web" },
+            { label: "Technologie", value: "HTML / CSS / JS" },
+          ].map(({ label, value }) => (
+            <div key={label}>
+              <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-2">{label}</div>
+              <div className="text-[14px] font-medium">{value}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Le défi */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.32 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-8">Le défi</div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Créer un site vitrine capable de retranscrire l'énergie visuelle et l'ambiance
+              propres à l'univers manga, sans recourir à un framework ni à un outil no-code.
+            </p>
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Le défi principal : livrer une expérience rapide et soignée en HTML, CSS et
+              JavaScript natifs, tout en gardant un code simple à maintenir et à faire évoluer.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Mon rôle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.38 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-8">Mon rôle</div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                num: "01",
+                title: "Design & Direction artistique",
+                desc: "Choix de la palette, de la typographie et de la mise en page pour refléter l'univers manga.",
+              },
+              {
+                num: "02",
+                title: "Développement Front",
+                desc: "Intégration complète en HTML, CSS et JavaScript vanilla — sans framework ni dépendance.",
+              },
+              {
+                num: "03",
+                title: "Mise en ligne",
+                desc: "Déploiement sur GitHub Pages, tests cross-navigateurs et optimisation avant livraison.",
+              },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="flex flex-col gap-3">
+                <span className="text-[10px] font-mono text-gray-400">{num}</span>
+                <h4 className="text-[15px] font-medium tracking-tight text-[#111]">{title}</h4>
+                <p className="text-[13px] text-gray-500 leading-[1.7]">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Results */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.44 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-10">Résultats</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            {[
+              { stat: "100 %", desc: "HTML / CSS / JS natif" },
+              { stat: "<2 s",  desc: "temps de chargement" },
+              { stat: "2026",  desc: "projet livré" },
+            ].map(({ stat, desc }) => (
+              <div key={stat}>
+                <div className="text-[3rem] md:text-[4rem] font-medium tracking-tight leading-none mb-3">{stat}</div>
+                <div className="text-[11px] font-mono uppercase tracking-widest text-gray-500">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Dark CTA */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.5 }}
+        className="mt-16 md:mt-24 bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32 flex flex-col items-center text-center"
+      >
+        <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Projet en ligne</div>
+        <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-10 max-w-xl">
+          Voir le site Manga en ligne
+        </h2>
+        <a
+          href="https://franckv001.github.io/site-manga/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300"
+        >
+          Visiter le projet
+          <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </motion.section>
+      <SiteFooter />
+    </div>
+  );
+}
+
+// ─── PROJECT DETAIL: RENAISSANCE AFRIK ──────────────────────────────────────
+
+function ProjectDetailRenaissanceAfrik({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Projet Renaissance Afrik — FRK-France",
+      "Renaissance Afrik — identité visuelle et présence digitale créées par FRK-France pour valoriser l'artisanat et la culture africaine en ligne.",
+      "/projets/renaissance-afrik/"
+    );
+  }, []);
+
+  return (
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
+
+      {/* Hero image */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-[#f0f2f5] overflow-hidden"
+      >
+        <img
+          src={`${base}index__3/hero_rennaissance_afrik.webp`}
           alt="Renaissance Afrik — Animation IA"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover object-center"
         />
       </motion.div>
 
@@ -1145,7 +1314,8 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
             <iframe
               src="https://www.youtube.com/embed/gYeV3tKIgSQ"
               title="Renaissance Afrik — Animation IA"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              sandbox="allow-scripts allow-same-origin allow-presentation"
               allowFullScreen
               className="w-full h-full"
             />
@@ -1236,10 +1406,49 @@ function ProjectDetailRenaissanceAfrik({ onBack }: { onBack: () => void }) {
   );
 }
 
+// ─── RELATED ARTICLES ────────────────────────────────────────────────────────
+
+const allArticles: Record<string, { id: string; cat: string; catColor: string; title: string }> = {
+  "nocode-vs-dev":           { id: "nocode-vs-dev",           cat: "No-Code",        catColor: "bg-[#f97316]", title: "No-Code vs Développement classique" },
+  "5-processus-automatiser": { id: "5-processus-automatiser", cat: "Automatisation",  catColor: "bg-[#a855f7]", title: "5 processus à automatiser cette année" },
+  "ia-productivite-pme":     { id: "ia-productivite-pme",     cat: "IA",             catColor: "bg-[#a855f7]", title: "L'IA pour doubler la productivité de votre équipe" },
+  "site-qui-fait-fuir":      { id: "site-qui-fait-fuir",      cat: "Web Design",     catColor: "bg-[#ec4899]", title: "Pourquoi votre site fait fuir vos clients" },
+  "app-sans-developpeur":    { id: "app-sans-developpeur",    cat: "No-Code",        catColor: "bg-[#f97316]", title: "Créer une app sans développeur en 30 jours" },
+};
+
+function RelatedArticles({ ids, onNavigate }: { ids: string[]; onNavigate: (page: string) => void }) {
+  const articles = ids.map(id => allArticles[id]).filter(Boolean);
+  if (!articles.length) return null;
+  return (
+    <div className="mt-16 pt-10 border-t border-gray-200">
+      <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-6">Articles liés</p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {articles.map(a => (
+          <button
+            key={a.id}
+            onClick={() => onNavigate(`blog-${a.id}`)}
+            className="group text-left border border-gray-200 rounded-md px-5 py-4 hover:border-[#111] transition-colors duration-300"
+          >
+            <span className={`inline-block text-[9px] font-mono uppercase tracking-widest text-white ${a.catColor} px-2 py-0.5 rounded-full mb-2`}>{a.cat}</span>
+            <p className="text-[13px] font-medium text-[#111] leading-snug group-hover:underline underline-offset-2">{a.title}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── BLOG ARTICLE: NO-CODE VS DEV ───────────────────────────────────────────
 
-function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogArticleNocodeVsDev({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "No-Code vs Développement classique — FRK-France",
+      "No-Code ou développement classique ? Comparez budgets, délais et cas d'usage pour choisir la meilleure approche pour votre projet digital en 2026.",
+      "/blog/nocode-vs-dev/"
+    );
+  }, []);
 
   const tableRows = [
     { crit: "Budget moyen",        nocode: "1 000 – 8 000 €",  dev: "5 000 – 50 000 €" },
@@ -1251,16 +1460,6 @@ function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Blog
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">8 min de lecture</span>
-      </header>
 
       {/* Hero */}
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
@@ -1424,13 +1623,15 @@ function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
             <h3 className="text-xl font-medium text-white tracking-tight">Parlons de votre projet.</h3>
             <p className="text-gray-400 text-[13px] mt-2">Je vous aide à choisir la bonne approche selon votre contexte.</p>
           </div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
             Me contacter
             <ArrowUpRight size={15} strokeWidth={1.5} />
           </a>
         </div>
       </section>
-
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["5-processus-automatiser", "ia-productivite-pme", "site-qui-fait-fuir", "app-sans-developpeur"]} onNavigate={onNavigate} />
+      </div>
       <SiteFooter />
     </div>
   );
@@ -1438,19 +1639,21 @@ function BlogArticleNocodeVsDev({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: 5 PROCESSUS ───────────────────────────────────────────────
 
-function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogArticle5Processus({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "5 processus à automatiser dans votre PME — FRK-France",
+      "Découvrez 5 processus que toute PME devrait automatiser avec Make, n8n ou Zapier pour gagner des heures par semaine et réduire les erreurs humaines.",
+      "/blog/5-processus-automatiser/"
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">6 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1515,9 +1718,12 @@ function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Passons à l'action</div><h3 className="text-xl font-medium text-white tracking-tight">Audit gratuit de 30 min</h3><p className="text-gray-400 text-[13px] mt-2">J'identifie vos meilleures opportunités d'automatisation.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["ia-productivite-pme", "nocode-vs-dev"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1525,19 +1731,21 @@ function BlogArticle5Processus({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: IA PRODUCTIVITÉ PME ───────────────────────────────────────
 
-function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogArticleIaProductivite({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "L'IA double votre productivité — FRK-France",
+      "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code.",
+      "/blog/ia-productivite-pme/"
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">7 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1601,9 +1809,12 @@ function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Accélérez votre transformation</div><h3 className="text-xl font-medium text-white tracking-tight">Intégrons l'IA dans vos workflows</h3><p className="text-gray-400 text-[13px] mt-2">Workshop demi-journée pour construire vos premiers prompts d'entreprise.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["5-processus-automatiser", "nocode-vs-dev"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1611,19 +1822,21 @@ function BlogArticleIaProductivite({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: SITE QUI FAIT FUIR ────────────────────────────────────────
 
-function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogArticleSiteFuir({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "7 erreurs qui font fuir vos visiteurs — FRK-France",
+      "Trop lent, illisible sur mobile, sans CTA clair ? Découvrez les 7 erreurs de site qui font fuir vos visiteurs et comment les corriger rapidement.",
+      "/blog/site-qui-fait-fuir/"
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
   const bq = (txt: string) => <blockquote className="border-l-2 border-[#f97316] pl-6 my-8"><p className="text-[#111] text-[16px] italic">{txt}</p></blockquote>;
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">6 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1703,9 +1916,12 @@ function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Audit offert</div><h3 className="text-xl font-medium text-white tracking-tight">Votre site perd des clients en ce moment</h3><p className="text-gray-400 text-[13px] mt-2">Audit UX complet + rapport d'actions priorisées sous 48h.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["nocode-vs-dev", "app-sans-developpeur"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1713,8 +1929,15 @@ function BlogArticleSiteFuir({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG ARTICLE: APP SANS DÉVELOPPEUR ──────────────────────────────────────
 
-function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogArticleAppSansDev({ onNavigate }: { onBack: () => void; onNavigate: (p: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Créer une app sans développeur — FRK-France",
+      "Créez votre application web sans coder avec Bubble, Glide ou Softr. Guide pratique, coûts réels et étapes clés pour lancer votre app en 30 jours.",
+      "/blog/app-sans-developpeur/"
+    );
+  }, []);
   const li = (txt: string) => <li className="flex gap-3"><span className="text-[#f97316] shrink-0">—</span><span>{txt}</span></li>;
   const h2 = (txt: string) => <h2 className="text-[1.5rem] md:text-[2rem] font-medium tracking-tight text-[#111] mb-5">{txt}</h2>;
   const h3 = (txt: string) => <h3 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#f97316] mb-3 mt-8">{txt}</h3>;
@@ -1735,11 +1958,6 @@ function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
   ];
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"><ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Blog</button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">9 min de lecture</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -1810,9 +2028,12 @@ function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
       <section className="px-6 md:px-16 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
           <div><div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Accélérez le process</div><h3 className="text-xl font-medium text-white tracking-tight">Votre app lancée en 30 jours</h3><p className="text-gray-400 text-[13px] mt-2">Conception, architecture No-Code, et lancement — je vous accompagne.</p></div>
-          <a href="mailto:franck@fkr-france.fr" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">Me contacter<ArrowUpRight size={15} strokeWidth={1.5} /></a>
         </div>
       </section>
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <RelatedArticles ids={["nocode-vs-dev", "5-processus-automatiser"]} onNavigate={onNavigate} />
+      </div>
             <SiteFooter />
     </div>
   );
@@ -1820,21 +2041,18 @@ function BlogArticleAppSansDev({ onBack }: { onBack: () => void }) {
 
 // ─── BLOG PAGE ───────────────────────────────────────────────────────────────
 
-function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleClick: (id: string) => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function BlogPage({ onArticleClick }: { onBack: () => void; onArticleClick: (id: string) => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Blog — No-Code, IA et Automatisation — FRK-France",
+      "Tous les articles de FRK-France sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs.",
+      "/blog/"
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <div />
-      </header>
 
       {/* Title */}
       <section className="pt-[57px] px-6 md:px-16 py-20 md:py-28 border-b border-gray-200">
@@ -1931,21 +2149,18 @@ function BlogPage({ onBack, onArticleClick }: { onBack: () => void; onArticleCli
 
 // ─── PAGE: DÉCOUVERTE & ANALYSE ──────────────────────────────────────────────
 
-function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function PageDecouverteAnalyse({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Découverte & Analyse — Notre processus — FRK-France",
+      "FRK-France audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs.",
+      "/processus/decouverte-analyse/"
+    );
+  }, []);
 
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
-          Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 01 / 05</span>
-      </header>
 
       {/* Hero */}
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
@@ -2047,7 +2262,7 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
           Architecture &amp; Design
         </h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Une fois le cadrage validé, on conçoit la structure et l'interface de votre solution.</p>
-        <a href="mailto:franck@fkr-france.fr"
+        <a href="mailto:franckviator@gmail.com"
           className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet
           <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -2060,17 +2275,17 @@ function PageDecouverteAnalyse({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: ARCHITECTURE & DESIGN ─────────────────────────────────────────────
 
-function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function PageArchitectureDesign({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Architecture & Design — Notre processus — FRK-France",
+      "FRK-France conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés.",
+      "/processus/architecture-design/"
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 02 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2133,7 +2348,7 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Production &amp; Build</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Les maquettes validées, on passe à la production et au développement de votre solution.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2144,17 +2359,17 @@ function PageArchitectureDesign({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: PRODUCTION & BUILD ─────────────────────────────────────────────────
 
-function PageProductionBuild({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function PageProductionBuild({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Production & Build — Notre processus — FRK-France",
+      "FRK-France développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats.",
+      "/processus/production-build/"
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 03 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2217,7 +2432,7 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Test &amp; Validation</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Avant de lancer, on teste chaque fonctionnalité pour garantir une mise en production sans accroc.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2228,17 +2443,17 @@ function PageProductionBuild({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: TEST & VALIDATION ──────────────────────────────────────────────────
 
-function PageTestValidation({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function PageTestValidation({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Test & Validation — Notre processus — FRK-France",
+      "FRK-France assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital.",
+      "/processus/test-validation/"
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 04 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2301,7 +2516,7 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Étape suivante</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Lancement &amp; Suivi</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Tests validés — on met en ligne et on assure le suivi post-lancement.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2312,17 +2527,17 @@ function PageTestValidation({ onBack }: { onBack: () => void }) {
 
 // ─── PAGE: LANCEMENT & SUIVI ──────────────────────────────────────────────────
 
-function PageLancementSuivi({ onBack }: { onBack: () => void }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+function PageLancementSuivi({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "Lancement & Suivi — Notre processus — FRK-France",
+      "FRK-France accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital.",
+      "/processus/lancement-suivi/"
+    );
+  }, []);
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
-        <button onClick={onBack} className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
-          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />Retour
-        </button>
-        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRK-France</span>
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400">Étape 05 / 05</span>
-      </header>
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -2385,7 +2600,7 @@ function PageLancementSuivi({ onBack }: { onBack: () => void }) {
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Prêt à démarrer ?</div>
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-4 max-w-xl">Parlons de votre projet</h2>
         <p className="text-gray-500 text-[14px] mb-10 max-w-sm">Découverte, design, build, tests, lancement — on gère tout de A à Z.</p>
-        <a href="mailto:franck@fkr-france.fr" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="mailto:franckviator@gmail.com" className="group inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Me contacter<ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
@@ -2425,7 +2640,7 @@ function NavTab({
         setPosition({ width, opacity: 1, left: ref.current.offsetLeft });
       }}
       onClick={onClick}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-[9px] uppercase tracking-widest text-white mix-blend-difference md:px-5 md:py-2 md:text-[10px] font-mono select-none"
+      className="relative z-10 block cursor-pointer px-3 py-1.5 text-[9px] uppercase tracking-widest text-white mix-blend-difference md:px-5 md:py-2 md:text-[10px] font-mono select-none whitespace-nowrap"
     >
       {children}
     </li>
@@ -2436,30 +2651,42 @@ const faqItems = [
   {
     q: "Combien coûte un projet ?",
     a: "Chaque projet est unique. Un site vitrine no-code démarre à partir de 800 €, une application sur mesure à partir de 2 500 €. Je fournis un devis détaillé après une session de découverte gratuite de 30 minutes.",
+    link: "blog-app-sans-developpeur",
+    linkLabel: "Créer une app en 30 jours →",
   },
   {
     q: "Quel est le délai de livraison ?",
     a: "Un site vitrine est livré en 1 à 3 semaines. Une application avec automatisations prend généralement 3 à 6 semaines selon le périmètre défini en phase de cadrage.",
+    link: null,
+    linkLabel: null,
   },
   {
     q: "No-Code ou développement classique ?",
     a: "Le No-Code (Webflow, Bubble…) livre plus vite à moindre coût, avec un contenu modifiable par vous-même. Le développement sur mesure est préféré pour des logiques métier très spécifiques ou des performances maximales. Je vous conseille l'approche adaptée à votre contexte.",
+    link: "blog-nocode-vs-dev",
+    linkLabel: "Lire le comparatif complet →",
   },
   {
     q: "Puis-je modifier mon site après la livraison ?",
     a: "Oui. Les projets No-Code sont conçus pour que vous puissiez mettre à jour contenus et images sans toucher au code. Pour les projets développés, je fournis une documentation et une formation à la prise en main.",
+    link: "blog-site-qui-fait-fuir",
+    linkLabel: "7 erreurs qui font fuir vos visiteurs →",
   },
   {
     q: "L'IA peut-elle vraiment automatiser mes processus ?",
     a: "Oui — traitement d'emails, qualification de leads, génération de rapports, relances clients… Lors de notre session de découverte, j'identifie les 3 automatisations les plus impactantes à prioriser pour votre activité.",
+    link: "blog-5-processus-automatiser",
+    linkLabel: "5 processus à automatiser dès maintenant →",
   },
   {
     q: "Proposez-vous un suivi après le lancement ?",
     a: "Oui, une période de suivi post-lancement de 2 semaines est incluse dans chaque projet. Des forfaits de maintenance mensuelle sont disponibles pour assurer mises à jour et optimisations continues.",
+    link: null,
+    linkLabel: null,
   },
 ];
 
-function FaqSection() {
+function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -2507,6 +2734,14 @@ function FaqSection() {
                     <p className="pt-4 pr-10 text-[14px] text-gray-500 leading-relaxed">
                       {item.a}
                     </p>
+                    {item.link && item.linkLabel && onNavigate && (
+                      <button
+                        onClick={() => onNavigate(item.link!)}
+                        className="mt-3 text-[11px] font-mono tracking-[0.12em] text-[#f97316] hover:text-[#ea6b0a] transition-colors duration-200"
+                      >
+                        {item.linkLabel}
+                      </button>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -2518,7 +2753,7 @@ function FaqSection() {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-[13px] text-gray-400 mb-4">Vous avez une question spécifique ?</p>
           <a
-            href="mailto:franck@fkr-france.fr"
+            href="mailto:franckviator@gmail.com"
             className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.15em] uppercase text-[#111] hover:text-gray-500 transition-colors duration-200"
           >
             Écrire un message <ArrowUpRight size={14} strokeWidth={1.5} />
@@ -2529,29 +2764,321 @@ function FaqSection() {
   );
 }
 
-function SiteFooter() {
+// ─── PAGE : À PROPOS ─────────────────────────────────────────────────────────
+
+function PageAPropos({}: { onBack: () => void }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      "À propos de FRK-France — Agence No-Code Paris",
+      "Découvrez FRK-France : notre histoire, nos valeurs et l'équipe derrière vos projets digitaux. Agence No-Code & IA fondée à Paris en 2024.",
+      "/a-propos/"
+    );
+  }, []);
+
+  const values = [
+    {
+      icon: "→",
+      title: "Impact avant tout",
+      desc: "Chaque décision de design ou de technologie est évaluée à l'aune d'un seul critère : est-ce que ça fait croître votre activité ?",
+    },
+    {
+      icon: "◎",
+      title: "Transparence totale",
+      desc: "Devis détaillé, planning visible, code ou plateforme livrés. Pas de boîte noire. Vous savez toujours où en est votre projet.",
+    },
+    {
+      icon: "⚡",
+      title: "Vitesse de livraison",
+      desc: "Le No-Code n'est pas un compromis — c'est un avantage. Un site vitrine en 2 semaines, une app en 6. Vous testez vite, vous itérez vite.",
+    },
+    {
+      icon: "⊕",
+      title: "Autonomie client",
+      desc: "Vos outils vous appartiennent. Formation, documentation, accès complet. Vous devez pouvoir gérer votre site sans dépendre de nous.",
+    },
+  ];
+
+  const timeline = [
+    {
+      year: "2019",
+      label: "Premiers pas",
+      desc: "Formation autodidacte au design web et développement front-end. Premiers projets pour des associations et TPE parisiennes.",
+    },
+    {
+      year: "2021",
+      label: "Découverte du No-Code",
+      desc: "Webflow, Bubble, Make : une révélation. La promesse de livrer vite, à moindre coût, sans sacrifier la qualité. Le tournant.",
+    },
+    {
+      year: "2023",
+      label: "Automatisation & IA",
+      desc: "Intégration de l'IA générative dans les workflows clients. Automatisation de processus métier qui libèrent des dizaines d'heures par mois.",
+    },
+    {
+      year: "2024",
+      label: "Création de FRK-France",
+      desc: "Fondation de l'agence à Paris. Une structure légère, réactive, orientée résultats — pour PME et entrepreneurs qui veulent aller vite.",
+    },
+  ];
+
+  const stats = [
+    { value: "15+", label: "projets livrés" },
+    { value: "< 3 sem.", label: "délai moyen site vitrine" },
+    { value: "800 €", label: "budget de départ" },
+    { value: "100 %", label: "clients autonomes à la livraison" },
+  ];
+
+  return (
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
+      {/* Hero */}
+      <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-36">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-500 mb-8">FRK-France · Paris · Fondée en 2024</div>
+            <h1 className="text-[2.4rem] sm:text-[3.2rem] md:text-[4.5rem] font-medium tracking-tight leading-[1.04] mb-8">
+              On construit des outils<br className="hidden md:block" /> qui font vraiment<br className="hidden md:block" />{" "}
+              <span className="text-[#f97316]">croître votre activité.</span>
+            </h1>
+            <p className="text-[16px] md:text-[18px] text-gray-400 leading-[1.8] max-w-2xl">
+              FRK-France est une agence digitale indépendante spécialisée en No-Code, design web et automatisation IA. Pas de structure lourde, pas d'intermédiaires inutiles — juste l'essentiel, livré vite et bien.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Chiffres clés */}
+      <section className="px-6 md:px-16 py-16 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map(({ value, label }) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col gap-1"
+            >
+              <span className="text-[2rem] md:text-[2.6rem] font-medium tracking-tight text-[#111]">{value}</span>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-gray-400">{label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Histoire */}
+      <section className="px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-6">Notre histoire</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            De freelance à agence — une trajectoire construite sur le terrain.
+          </h2>
+          <div className="relative">
+            {/* Ligne verticale */}
+            <div className="absolute left-[3.5rem] top-0 bottom-0 w-px bg-gray-100 hidden md:block" />
+            <div className="flex flex-col gap-12">
+              {timeline.map(({ year, label, desc }, i) => (
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="flex gap-8 md:gap-16"
+                >
+                  <div className="shrink-0 w-14 text-right">
+                    <span className="text-[11px] font-mono text-[#f97316] tracking-widest">{year}</span>
+                  </div>
+                  <div className="flex flex-col gap-1 pb-2">
+                    <span className="text-[15px] font-medium text-[#111]">{label}</span>
+                    <p className="text-[14px] text-gray-500 leading-relaxed">{desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Valeurs */}
+      <section className="px-6 md:px-16 py-20 md:py-28 bg-[#0a0a0a] text-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-500 mb-6">Nos valeurs</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            Ce qui guide chaque projet, chaque décision, chaque ligne de code.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {values.map(({ icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className="flex flex-col gap-3 border-t border-white/10 pt-6"
+              >
+                <span className="text-[#f97316] text-[18px] font-light">{icon}</span>
+                <span className="text-[15px] font-medium tracking-tight">{title}</span>
+                <p className="text-[14px] text-gray-400 leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Équipe */}
+      <section className="px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-6">L'équipe</div>
+          <h2 className="text-[1.8rem] md:text-[2.6rem] font-medium tracking-tight mb-16 max-w-2xl">
+            Une agence à taille humaine, un interlocuteur unique.
+          </h2>
+
+          {/* Profil fondateur */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row gap-10 items-start pb-12 border-b border-gray-100"
+          >
+            {/* Avatar */}
+            <div className="shrink-0 w-20 h-20 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+              <span className="text-[#f97316] text-[28px] font-medium tracking-tight">F</span>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <p className="text-[18px] font-medium tracking-tight">Franck Viator</p>
+                <p className="text-[11px] font-mono uppercase tracking-widest text-[#f97316] mt-0.5">Fondateur · Lead No-Code & IA</p>
+              </div>
+              <p className="text-[14px] text-gray-600 leading-relaxed max-w-xl">
+                Développeur autodidacte reconverti dans le No-Code, je travaille à l'intersection du design, de la technologie et de l'automatisation. Mon objectif : livrer des projets qui durent et que vous pouvez gérer vous-même.
+              </p>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {["Webflow", "Bubble", "Make", "n8n", "React", "TypeScript", "ChatGPT API"].map((skill) => (
+                  <span key={skill} className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 bg-gray-100 text-gray-500 rounded-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Réseau */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="pt-10"
+          >
+            <p className="text-[13px] text-gray-500 leading-relaxed max-w-xl">
+              Sur les projets plus larges, FRK-France s'appuie sur un réseau de freelances qualifiés — rédacteurs SEO, développeurs back-end, graphistes — tous sélectionnés pour leur exigence et leur réactivité.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 md:px-16 py-16 bg-gray-50">
+        <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-[#0a0a0a] p-10 rounded-md">
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#f97316] mb-2">Démarrons ensemble</div>
+            <h3 className="text-xl font-medium text-white tracking-tight">Parlez-moi de votre projet.</h3>
+            <p className="text-gray-400 text-[13px] mt-2">Session de découverte gratuite · 30 minutes · Sans engagement</p>
+          </div>
+          <a href="mailto:franckviator@gmail.com" className="shrink-0 inline-flex items-center gap-2 bg-[#f97316] text-white px-7 py-3.5 rounded-md text-[13px] font-medium tracking-wide hover:bg-[#ea6b0a] transition-colors duration-300">
+            Prendre contact
+            <ArrowUpRight size={15} strokeWidth={1.5} />
+          </a>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}) {
+  const scrollTo = (id: string) => {
+    if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-[#0a0a0a] text-white">
-      <div className="px-6 md:px-16 py-10 md:py-14 max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div className="flex flex-col gap-1">
-          <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
-          <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Agence Digitale</span>
+      {/* Plan du site */}
+      <div className="px-6 md:px-16 pt-14 md:pt-20 pb-10 max-w-6xl mx-auto">
+        <p className="text-[9px] font-mono tracking-[0.25em] uppercase text-gray-600 mb-10">Plan du site</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-12 border-b border-white/10">
+
+          {/* Colonne 1 — Brand */}
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+            <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
+            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Agence Digitale<br />Paris, France</span>
+            <div className="flex flex-col gap-1 mt-2">
+              <a href="mailto:franckviator@gmail.com" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">franckviator@gmail.com</a>
+              <a href="tel:+33650135857" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">+33 6 50 13 58 57</a>
+            </div>
+          </div>
+
+          {/* Colonne 2 — Navigation */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Navigation</p>
+            {[
+              { label: "Accueil",   action: () => scrollTo("top") },
+              { label: "Expertise", action: () => scrollTo("expertise") },
+              { label: "Projets",   action: () => scrollTo("projets") },
+              { label: "Processus", action: () => scrollTo("processus") },
+              { label: "Blog",      action: () => onNavigate?.("blog") },
+              { label: "À propos",  action: () => onNavigate?.("a-propos") },
+              { label: "Contact",   action: () => scrollTo("contact") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Colonne 3 — Projets */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Projets</p>
+            {[
+              { label: "Site e-commerce",     action: () => onNavigate?.("p1") },
+              { label: "Site vitrine Apex",    action: () => onNavigate?.("p2") },
+              { label: "Animation IA",         action: () => onNavigate?.("p3") },
+              { label: "Automatisation CRM",   action: () => scrollTo("projets") },
+              { label: "Dashboard Analytics",  action: () => scrollTo("projets") },
+              { label: "Site vitrine Targo",   action: () => onNavigate?.("p6") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Colonne 4 — Blog */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-gray-600 mb-1">Blog</p>
+            {[
+              { label: "No-Code vs Développement",   action: () => onNavigate?.("blog-nocode-vs-dev") },
+              { label: "5 processus à automatiser",   action: () => onNavigate?.("blog-5-processus-automatiser") },
+              { label: "IA & Productivité PME",       action: () => onNavigate?.("blog-ia-productivite-pme") },
+              { label: "Site qui fait fuir",           action: () => onNavigate?.("blog-site-qui-fait-fuir") },
+              { label: "App sans développeur",        action: () => onNavigate?.("blog-app-sans-developpeur") },
+            ].map(({ label, action }) => (
+              <button key={label} onClick={action} className="text-left text-[11px] font-mono text-gray-400 hover:text-white transition-colors duration-200 tracking-wide">
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-mono tracking-[0.15em] uppercase text-gray-400">
-          {[
-            { label: "Accueil",   id: "top" },
-            { label: "Expertise", id: "expertise" },
-            { label: "Projets",   id: "projets" },
-            { label: "Processus", id: "processus" },
-            { label: "Contact",   id: "contact" },
-          ].map(({ label, id }) => (
-            <button key={label} onClick={() => {
-              if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
-              else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-            }} className="hover:text-white transition-colors duration-200">{label}</button>
-          ))}
-        </nav>
-        <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRK-France</div>
+
+        {/* Copyright */}
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRK-France — Tous droits réservés</div>
+          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">Solution No Code · Paris, France</div>
+        </div>
       </div>
     </footer>
   );
@@ -2617,6 +3144,7 @@ function SlidingNav({ onNavigate, onScrollTo }: { onNavigate: (page: string | nu
     { label: "Projets",   action: () => scrollOrGo("projets") },
     { label: "Processus", action: () => scrollOrGo("processus") },
     { label: "Blog",      action: () => onNavigate("blog") },
+    { label: "À propos",  action: () => onNavigate("a-propos") },
     { label: "Contact",   action: () => scrollOrGo("contact") },
   ];
 
@@ -2650,6 +3178,7 @@ function MobileNav({ onNavigate, onScrollTo }: { onNavigate: (page: string | nul
     { label: "Projets",   action: () => scrollOrGo("projets") },
     { label: "Processus", action: () => scrollOrGo("processus") },
     { label: "Blog",      action: () => onNavigate("blog") },
+    { label: "À propos",  action: () => onNavigate("a-propos") },
     { label: "Contact",   action: () => scrollOrGo("contact") },
   ];
 
@@ -2699,7 +3228,29 @@ export default function App() {
   const [activePage, setActivePage] = useState<string | null>(null);
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
   const [activeChapter, setActiveChapter] = useState(2);
+
+  useEffect(() => {
+    if (activePage === null) {
+      setPageMeta(
+        "FRK-France — Design Web, No-Code & IA",
+        "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs.",
+        "/"
+      );
+    }
+  }, [activePage]);
+
+  // Deep-link: restore page from sessionStorage (set by 404.html redirect)
+  useEffect(() => {
+    const redirect = sessionStorage.getItem("spa_redirect");
+    if (redirect) {
+      sessionStorage.removeItem("spa_redirect");
+      const page = PATH_TO_PAGE[redirect];
+      if (page) setActivePage(page);
+    }
+  }, []);
 
   // Video delay
   useEffect(() => {
@@ -2754,23 +3305,29 @@ export default function App() {
   if (activePage === "p6") {
     return <>{nav}<ProjectDetailTargo onBack={() => setActivePage(null)} /></>;
   }
+  if (activePage === "p7") {
+    return <>{nav}<ProjectDetailManga onBack={() => setActivePage(null)} /></>;
+  }
   if (activePage === "blog") {
     return <>{nav}<BlogPage onBack={() => setActivePage(null)} onArticleClick={(id) => setActivePage(`blog-${id}`)} /></>;
   }
   if (activePage === "blog-nocode-vs-dev") {
-    return <>{nav}<BlogArticleNocodeVsDev onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleNocodeVsDev onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-5-processus-automatiser") {
-    return <>{nav}<BlogArticle5Processus onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticle5Processus onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-ia-productivite-pme") {
-    return <>{nav}<BlogArticleIaProductivite onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleIaProductivite onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-site-qui-fait-fuir") {
-    return <>{nav}<BlogArticleSiteFuir onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleSiteFuir onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
   }
   if (activePage === "blog-app-sans-developpeur") {
-    return <>{nav}<BlogArticleAppSansDev onBack={() => setActivePage("blog")} /></>;
+    return <>{nav}<BlogArticleAppSansDev onBack={() => setActivePage("blog")} onNavigate={setActivePage} /></>;
+  }
+  if (activePage === "a-propos") {
+    return <>{nav}<PageAPropos onBack={() => setActivePage(null)} /></>;
   }
   if (activePage === "decouverte-analyse") {
     return <>{nav}<PageDecouverteAnalyse onBack={() => setActivePage(null)} /></>;
@@ -2795,7 +3352,10 @@ export default function App() {
       {nav}
 
       {/* ═══════════════════════════════════════════════════════ SECTION 1: HERO */}
-      <section className="relative w-full min-h-screen flex flex-col overflow-hidden">
+      <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#111]">
+
+        {/* Dark base — always visible, ensures white text is readable before video */}
+        <div className="absolute inset-0 bg-[#111] z-0" />
 
         {/* 1D — Background Video */}
         <AnimatePresence>
@@ -2805,17 +3365,18 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
-              className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
+              className="absolute top-0 left-0 w-full h-full pointer-events-none z-[1]"
             >
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
+                onCanPlay={() => setVideoReady(true)}
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="https://res.cloudinary.com/dsdxaxkiz/video/upload/v1779624998/magnific_use-img-2-as-the-exact-ba_Piu3X0W42C_wnrc8f.mp4"
+                  src={`${base}video/Hero_video.mp4`}
                   type="video/mp4"
                 />
               </video>
@@ -2823,58 +3384,36 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* 1A — Header: NHM SVG Logo */}
+        {/* Box Loader — visible while video hasn't started playing */}
+        <AnimatePresence>
+          {!videoReady && (
+            <motion.div
+              key="hero-loader"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.8 } }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none"
+            >
+              <BoxLoader />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* 1A — Header: Simple Logo */}
         <motion.header
           initial="initial"
           animate="animate"
           variants={{ animate: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
           className="pt-6 px-6 md:px-16 z-20"
         >
-          <motion.h1
-            variants={{
-              initial: { scale: 1.03 },
-              animate: {
-                scale: 1,
-                transition: { staggerChildren: 0.06, delayChildren: 0.1 },
-              },
-            }}
-            className="w-full"
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-white text-[16px] font-mono font-bold tracking-wider mb-8"
           >
-            {(() => {
-              const chars = ["F","R","K","-","F","r","a","n","c","e"];
-              const slotW = 100;
-              return (
-                <svg
-                  viewBox="0 0 1000 115"
-                  className="w-full fill-[#111]"
-                  aria-label="FRK-France"
-                >
-                  <defs>
-                    {chars.map((_, i) => (
-                      <clipPath key={i} id={`frkclip-${i}`}>
-                        <rect x={i * slotW} y={-10} width={slotW + 1} height={130} />
-                      </clipPath>
-                    ))}
-                  </defs>
-                  {chars.map((char, i) => (
-                    <g key={i} clipPath={`url(#frkclip-${i})`}>
-                      <motion.text
-                        x={i * slotW + slotW / 2}
-                        y={108}
-                        variants={letterBlock}
-                        textAnchor="middle"
-                        fontSize={110}
-                        fontWeight={600}
-                        fontFamily="Inter, ui-sans-serif, sans-serif"
-                      >
-                        {char}
-                      </motion.text>
-                    </g>
-                  ))}
-                </svg>
-              );
-            })()}
-          </motion.h1>
+            FRANCKV
+          </motion.div>
 
           {/* 1B — Sub-nav bar */}
           <motion.div
@@ -2882,36 +3421,7 @@ export default function App() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-between items-start mt-4 md:mt-8"
           >
-            {/* Left column */}
-            <div className="text-[10px] md:text-[11px] font-mono tracking-[0.2em] uppercase w-[15%]">
-              <div>FRK</div>
-              <div>France</div>
-              <div>Agence</div>
-            </div>
 
-            {/* Arrow separator */}
-            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
-              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
-            </div>
-
-            {/* Center column */}
-            <div className="flex-1 md:flex-none md:w-[30%] text-gray-800 leading-relaxed font-mono text-[10px] md:text-[11px] tracking-[0.15em]">
-              <span className="hidden md:block">
-                Sites, apps et IA<br />
-                conçus pour votre<br />
-                croissance digitale.
-              </span>
-              <span className="md:hidden">
-                Sites, apps et IA<br />
-                pour votre<br />
-                croissance.
-              </span>
-            </div>
-
-            {/* Arrow separator */}
-            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
-              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
-            </div>
 
             {/* Right nav links */}
             <div className="hidden md:flex flex-col gap-1 w-[15%] text-[10px] font-mono tracking-[0.2em] uppercase">
@@ -2941,44 +3451,73 @@ export default function App() {
         </motion.header>
 
         {/* Hero body: left + right sidebars */}
-        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-20 sm:mt-28 md:mt-32 pb-24 md:pb-0 z-10 flex-1">
+        <div className="flex flex-col md:flex-row justify-between px-6 md:px-16 mt-1 sm:mt-2 md:mt-2 pb-24 md:pb-0 z-10 flex-1">
 
           {/* 1E — Left Sidebar */}
           <motion.div
             initial="initial"
             animate="animate"
-            variants={{ animate: { transition: { staggerChildren: 0.15, delayChildren: 0.6 } } }}
+            variants={{ animate: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } }}
             className="w-full md:w-[320px]"
           >
             {/* Section indicator */}
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex items-center gap-3 mb-6 text-xs font-mono"
+              className="flex items-center gap-3 mb-6 text-xs font-mono text-white"
             >
               <span>01</span>
-              <span className="w-16 h-[1.5px] bg-black/20 block" />
+              <span className="w-16 h-[1.5px] bg-white/30 block" />
             </motion.div>
 
             {/* Headline */}
             <motion.h2
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-tight leading-[1] mb-6"
+              className="text-[1rem] sm:text-[1.4rem] md:text-[1.8rem] font-normal tracking-tight leading-[1] mb-6 text-white"
             >
-              AGENCE<br />DIGITALE
+              CONSULTANT<br />DIGITAL
             </motion.h2>
 
-            {/* Description */}
+            {/* Slogan */}
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[20px] md:text-[26px] text-gray-700 w-full max-w-[400px] leading-[1.5] mb-8"
+              className="text-[11px] font-mono tracking-[0.25em] uppercase text-white/60 mb-6"
             >
-              Des outils digitaux qui font<br />
-              croître votre activité —<br />
-              web, apps et IA.
+              Solution No Code
             </motion.p>
+
+            {/* CTA Contactez-nous */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-6 flex flex-row items-center gap-4"
+            >
+              <button
+                onClick={() => setShowPhone(v => !v)}
+                className="group inline-flex items-center gap-3 border border-white/60 text-white px-6 py-3 rounded-md text-[13px] font-mono tracking-widest uppercase hover:bg-white hover:text-[#111] transition-all duration-300 w-fit shrink-0"
+              >
+                Contactez-nous
+                <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              <AnimatePresence>
+                {showPhone && (
+                  <motion.a
+                    href="tel:0650135857"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-3 rounded-md text-[14px] font-mono tracking-widest hover:bg-white/20 transition-colors duration-200 whitespace-nowrap"
+                  >
+                    <Phone size={15} strokeWidth={2} className="text-[#f97316]" />
+                    06 50 13 58 57
+                  </motion.a>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
 
             {/* CTA Button */}
             <motion.div
@@ -3019,10 +3558,10 @@ export default function App() {
           >
             {/* Agency info */}
             <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <div className="text-[10px] font-bold font-mono tracking-widest uppercase mb-2">
+              <div className="text-[10px] font-bold font-mono tracking-widest uppercase mb-2 text-white">
                 FRK-France
               </div>
-              <div className="text-[12px] text-gray-600 leading-[1.6]">
+              <div className="text-[12px] text-white/70 leading-[1.6]">
                 Agence digitale<br />Paris, France
               </div>
             </motion.div>
@@ -3030,12 +3569,12 @@ export default function App() {
             {/* Stats */}
             <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-3">
               <div>
-                <div className="text-[10px] font-mono tracking-widest uppercase text-gray-500">Projets livrés</div>
-                <div className="text-[13px] font-medium">12 +</div>
+                <div className="text-[10px] font-mono tracking-widest uppercase text-white/60">Projets livrés</div>
+                <div className="text-[13px] font-medium text-white">12 +</div>
               </div>
               <div>
-                <div className="text-[10px] font-mono tracking-widest uppercase text-gray-500">Satisfaction</div>
-                <div className="text-[13px] font-medium">100 %</div>
+                <div className="text-[10px] font-mono tracking-widest uppercase text-white/60">Satisfaction</div>
+                <div className="text-[13px] font-medium text-white">100 %</div>
               </div>
             </motion.div>
 
@@ -3054,7 +3593,7 @@ export default function App() {
                     className="text-gray-600 group-hover:text-white transition-colors duration-300"
                   />
                 </div>
-                <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
+                <span className="text-[10px] font-mono uppercase tracking-widest font-bold text-white">
                   View Details
                 </span>
               </a>
@@ -3062,21 +3601,104 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* 1G — Bottom-left "Scroll to explore" */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-          className="absolute bottom-10 left-[2.5rem] md:left-[4rem] hidden md:flex items-center gap-4 z-10"
-        >
-          <div className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center gap-[4px]">
-            <span className="w-[1px] h-[12px] bg-gray-600 block" />
-            <span className="w-[1px] h-[12px] bg-gray-600 block" />
+      </section>
+
+      {/* ══════════════════════════════════════ SECTION MANIFESTE */}
+      <section className="relative w-full bg-white px-6 md:px-16 py-24 md:py-36 z-20 overflow-hidden">
+        {/* Grain décoratif */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
+          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }}
+        />
+
+        <div className="relative max-w-5xl mx-auto">
+
+          {/* Label */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-10"
+          >
+            Pourquoi FRK-France
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.05 }}
+            className="text-[1.9rem] sm:text-[2.8rem] md:text-[3.6rem] font-medium tracking-tight leading-[1.08] text-[#111] mb-8 max-w-3xl"
+          >
+            Un outil digital précis ne devrait pas coûter{" "}
+            <span className="text-gray-300">une fortune</span> ni prendre{" "}
+            <span className="text-gray-300">six mois</span>.
+          </motion.h2>
+
+          {/* Lead */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[15px] md:text-[17px] text-gray-500 leading-[1.85] max-w-2xl mb-20"
+          >
+            FRK-France existe pour donner aux PME et aux entrepreneurs
+            les mêmes armes que les grandes entreprises — livrées vite,
+            construites pour durer, et que vous gérez vous-même.
+          </motion.p>
+
+          {/* 3 piliers */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-t border-gray-100 pt-14">
+            {[
+              {
+                num: "01",
+                title: "Mission",
+                body: "Rendre le digital accessible aux PME et entrepreneurs — sans compromis sur la qualité, la vitesse ou l'autonomie du client.",
+              },
+              {
+                num: "02",
+                title: "Méthode",
+                body: "No-Code en priorité, développement sur mesure quand nécessaire, IA partout où c'est pertinent. Toujours orienté résultat mesurable.",
+              },
+              {
+                num: "03",
+                title: "Engagement",
+                body: "Vous êtes autonome à la livraison. Formation incluse, documentation fournie, accès complet. Votre outil vous appartient vraiment.",
+              },
+            ].map(({ num, title, body }, i) => (
+              <motion.div
+                key={num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.14 + i * 0.09 }}
+                className="flex flex-col gap-3"
+              >
+                <span className="text-[10px] font-mono text-[#f97316] tracking-widest">{num}</span>
+                <h3 className="text-[15px] font-semibold tracking-tight text-[#111]">{title}</h3>
+                <p className="text-[13px] text-gray-500 leading-relaxed">{body}</p>
+              </motion.div>
+            ))}
           </div>
-          <span className="text-[10px] font-mono tracking-widest uppercase text-gray-500 font-semibold">
-            Scroll to explore
-          </span>
-        </motion.div>
+
+          {/* Citation de marque */}
+          <motion.blockquote
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-16 border-l-2 border-[#f97316] pl-6"
+          >
+            <p className="text-[15px] md:text-[17px] text-[#111] font-medium leading-snug italic max-w-xl">
+              "Le meilleur outil digital, c'est celui que vos équipes utilisent vraiment — pas celui qui impressionne en démo."
+            </p>
+            <cite className="mt-3 block text-[10px] font-mono uppercase tracking-widest text-gray-400 not-italic">
+              Franck Viator · Fondateur, FRK-France
+            </cite>
+          </motion.blockquote>
+        </div>
       </section>
 
       {/* ══════════════════════════════════════ SECTION 2: EXPLORE OUR WORLD */}
@@ -3145,16 +3767,16 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1.4, ease: "easeOut" }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160vw] md:w-[1000px] pointer-events-none"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[120vw] md:w-[900px] lg:w-[1000px] pointer-events-none"
           >
             <motion.img
-              src="https://res.cloudinary.com/dsdxaxkiz/image/upload/v1779625001/ChatGPT_Image_May_23_2026_12_24_44_PM_1_lv1dne.png"
+              src={`${base}Pterodactyle.webp`}
               alt="Pterodactyl"
-              className="w-full"
+              className="w-full h-auto"
               animate={{
-                y: [0, -22, 0],
+                y: [0, -8, 0],
                 rotate: [-1, 1, -1],
-                x: [0, 12, 0],
+                x: [0, 8, 0],
               }}
               transition={{
                 duration: 6,
@@ -3360,7 +3982,7 @@ export default function App() {
       </section>
 
       {/* ══════════════════════════════════════ SECTION FAQ */}
-      <FaqSection />
+      <FaqSection onNavigate={(p) => setActivePage(p)} />
 
       {/* ══════════════════════════════════════ SECTION 5: CONTACT */}
       <section id="contact" className="relative w-full bg-[#fcfcfc] text-[#111] overflow-hidden">
@@ -3399,11 +4021,11 @@ export default function App() {
 
               {/* Email CTA */}
               <a
-                href="mailto:franck@fkr-france.fr"
+                href="mailto:franckviator@gmail.com"
                 className="group inline-flex items-center gap-4 mb-10"
               >
                 <span className="text-[1rem] md:text-[1.25rem] font-mono tracking-tight text-gray-500 group-hover:text-[#111] transition-colors duration-300 underline underline-offset-4 decoration-gray-300 group-hover:decoration-[#111]">
-                  franck@fkr-france.fr
+                  franckviator@gmail.com
                 </span>
                 <span className="w-9 h-9 rounded-full bg-[#111] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <ArrowUpRight size={15} strokeWidth={1.5} className="text-white" />
@@ -3468,36 +4090,7 @@ export default function App() {
         </div>
 
         {/* ── FOOTER ── */}
-        <footer className="border-t border-gray-200 bg-[#0a0a0a] text-white">
-          <div className="px-6 md:px-16 py-10 md:py-14 max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-
-            {/* Brand */}
-            <div className="flex flex-col gap-1">
-              <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
-              <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Agence Digitale</span>
-            </div>
-
-            {/* Nav links */}
-            <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-mono tracking-[0.15em] uppercase text-gray-400">
-              {[
-                { label: "Accueil", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-                { label: "Expertise", action: () => document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Projets", action: () => document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Processus", action: () => document.getElementById("processus")?.scrollIntoView({ behavior: "smooth" }) },
-                { label: "Contact", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
-              ].map(({ label, action }) => (
-                <button key={label} onClick={action} className="hover:text-white transition-colors duration-200">
-                  {label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Copyright */}
-            <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">
-              © 2026 FRK-France
-            </div>
-          </div>
-        </footer>
+        <SiteFooter onNavigate={(p) => setActivePage(p)} />
 
       </section>
     </div>

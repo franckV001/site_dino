@@ -1,10 +1,311 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FRK-France — Agence Digitale</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Preconnect for Google Fonts (eliminates DNS+TLS from critical path) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <title>FRK-France — Design Web, No-Code & IA</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="FRK-France — Design Web, No-Code & IA" />
+    <meta property="og:description" content="Des outils digitaux qui font croître votre activité — web, apps et IA. Solution No Code." />
+    <meta property="og:url" content="https://franckv001.github.io/site_dino/" />
+    <meta property="og:image" content="https://franckv001.github.io/site_dino/Pterodactyle.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FRK-France — Agence Digitale" />
+    <meta name="twitter:description" content="Des outils digitaux qui font croître votre activité — web, apps et IA." />
+    <!-- SEO -->
+    <meta name="description" content="FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs." />
+    <meta name="keywords" content="agence digitale, no-code, design web, automatisation, IA, Paris, Webflow, React, Make, n8n" />
+    <meta name="author" content="FRK-France" />
+    <link rel="canonical" href="https://franckv001.github.io/site_dino/" />
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="fr" href="https://franckv001.github.io/site_dino/" />
+    <link rel="alternate" hreflang="x-default" href="https://franckv001.github.io/site_dino/" />
+    <!-- Geo -->
+    <meta name="geo.position" content="48.8566;2.3522" />
+    <meta name="geo.placename" content="Paris, France" />
+    <meta name="geo.region" content="FR-75" />
+
+    <!-- Schema.org JSON-LD — Organisation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "FRK-France",
+      "alternateName": "FRK France Agence Digitale",
+      "url": "https://franckv001.github.io/site_dino/",
+      "logo": "https://franckv001.github.io/site_dino/favicon.svg",
+      "image": "https://franckv001.github.io/site_dino/Pterodactyle.webp",
+      "description": "Agence digitale spécialisée en design web, développement no-code, automatisation IA et stratégie digitale. Solutions sur-mesure pour PME et entrepreneurs.",
+      "telephone": "+33650135857",
+      "email": "franckviator@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Paris",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.8566,
+        "longitude": 2.3522
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      },
+      "priceRange": "€€",
+      "foundingDate": "2024",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services digitaux",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Design Web",
+              "description": "Conception et intégration de sites web modernes, responsives et orientés conversion."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Développement No-Code",
+              "description": "Création d'applications web et de sites sans code avec Webflow, Bubble, Weweb."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatisation IA",
+              "description": "Automatisation de processus métier avec Make, n8n, et intégration d'outils IA."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Stratégie Digitale",
+              "description": "Audit, conseil et accompagnement pour accélérer la croissance digitale."
+            }
+          }
+        ]
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Franck Viator",
+        "jobTitle": "Fondateur — Lead No-Code & IA",
+        "url": "https://franckv001.github.io/site_dino/a-propos/"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+33650135857",
+        "email": "franckviator@gmail.com",
+        "areaServed": "FR",
+        "availableLanguage": ["French"]
+      },
+      "sameAs": [
+        "https://github.com/franckV001"
+      ]
+    }
+    </script>
+    <!-- Schema.org JSON-LD — Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://franckv001.github.io/site_dino/#service-design-web",
+          "name": "Design Web",
+          "alternateName": "Création de site web sur-mesure",
+          "description": "Conception et intégration de sites web modernes, responsives et orientés conversion. Audit UX, wireframing, design system, animations et intégration technique.",
+          "serviceType": "Web Design",
+          "category": "Services Digitaux",
+          "url": "https://franckv001.github.io/site_dino/",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "FRK-France",
+            "url": "https://franckv001.github.io/site_dino/"
+          },
+          "areaServed": { "@type": "Country", "name": "France" },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 800,
+              "priceCurrency": "EUR",
+              "description": "Site vitrine à partir de 800 €"
+            },
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "ProfessionalService",
+              "name": "FRK-France"
+            }
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://franckv001.github.io/site_dino/#service-nocode",
+          "name": "Développement No-Code",
+          "alternateName": "Application No-Code Webflow Bubble",
+          "description": "Création d'applications web et de sites sans code avec Webflow, Bubble, Weweb. Livraison rapide, contenu modifiable en autonomie, coût réduit par rapport au développement classique.",
+          "serviceType": "No-Code Development",
+          "category": "Services Digitaux",
+          "url": "https://franckv001.github.io/site_dino/",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "FRK-France",
+            "url": "https://franckv001.github.io/site_dino/"
+          },
+          "areaServed": { "@type": "Country", "name": "France" },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 2500,
+              "priceCurrency": "EUR",
+              "description": "Application sur mesure à partir de 2 500 €"
+            },
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "ProfessionalService",
+              "name": "FRK-France"
+            }
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://franckv001.github.io/site_dino/#service-automatisation-ia",
+          "name": "Automatisation IA",
+          "alternateName": "Automatisation de processus métier",
+          "description": "Automatisation de processus métier avec Make, n8n, Zapier et intégration d'outils IA (ChatGPT, Claude, Copilot). Traitement d'emails, qualification de leads, génération de rapports et relances automatiques.",
+          "serviceType": "Business Process Automation",
+          "category": "Services Digitaux",
+          "url": "https://franckv001.github.io/site_dino/",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "FRK-France",
+            "url": "https://franckv001.github.io/site_dino/"
+          },
+          "areaServed": { "@type": "Country", "name": "France" },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "description": "Audit gratuit de 30 minutes — devis sur mesure selon le périmètre",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "ProfessionalService",
+              "name": "FRK-France"
+            }
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://franckv001.github.io/site_dino/#service-strategie-digitale",
+          "name": "Stratégie Digitale",
+          "alternateName": "Conseil en transformation digitale",
+          "description": "Audit digital complet, conseil stratégique et accompagnement personnalisé pour accélérer la transformation et la croissance digitale des PME et entrepreneurs.",
+          "serviceType": "Digital Strategy Consulting",
+          "category": "Services Digitaux",
+          "url": "https://franckv001.github.io/site_dino/",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "FRK-France",
+            "url": "https://franckv001.github.io/site_dino/"
+          },
+          "areaServed": { "@type": "Country", "name": "France" },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "description": "Session de découverte gratuite de 30 minutes — devis détaillé fourni sous 48h",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "ProfessionalService",
+              "name": "FRK-France"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD — FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien coûte un projet ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chaque projet est unique. Un site vitrine no-code démarre à partir de 800 €, une application sur mesure à partir de 2 500 €. Nous fournissons un devis détaillé après une session de découverte gratuite de 30 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est le délai de livraison ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un site vitrine est livré en 1 à 3 semaines. Une application avec automatisations prend généralement 3 à 6 semaines selon le périmètre défini en phase de cadrage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "No-Code ou développement classique ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le No-Code (Webflow, Bubble…) livre plus vite à moindre coût, avec un contenu modifiable par vous-même. Le développement sur mesure est préféré pour des logiques métier très spécifiques ou des performances maximales. Nous vous conseillons l'approche adaptée à votre contexte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je modifier mon site après la livraison ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Les projets No-Code sont conçus pour que vous puissiez mettre à jour contenus et images sans toucher au code. Pour les projets développés, une documentation et une formation à la prise en main sont fournies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'IA peut-elle vraiment automatiser mes processus ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui — traitement d'emails, qualification de leads, génération de rapports, relances clients… Lors de la session de découverte, nous identifions les 3 automatisations les plus impactantes à prioriser pour votre activité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Proposez-vous un suivi après le lancement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, une période de suivi post-lancement de 2 semaines est incluse dans chaque projet. Des forfaits de maintenance mensuelle sont disponibles pour assurer mises à jour et optimisations continues."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
