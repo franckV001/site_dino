@@ -3400,20 +3400,58 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* 1A — Header: Simple Logo */}
+        {/* 1A — Header: NHM SVG Logo */}
         <motion.header
           initial="initial"
           animate="animate"
           variants={{ animate: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
           className="pt-6 px-6 md:px-16 z-20"
         >
-          <motion.div
-            variants={fadeUp}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-white text-[16px] font-mono font-bold tracking-wider mb-8"
+          <motion.h1
+            variants={{
+              initial: { scale: 1.03 },
+              animate: {
+                scale: 1,
+                transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+              },
+            }}
+            className="w-full"
           >
-            FRANCKV
-          </motion.div>
+            {(() => {
+              const chars = ["F","R","K","-","F","r","a","n","c","e"];
+              const slotW = 100;
+              return (
+                <svg
+                  viewBox="0 0 1000 115"
+                  className="w-full fill-white"
+                  aria-label="FRK-France"
+                >
+                  <defs>
+                    {chars.map((_, i) => (
+                      <clipPath key={i} id={`frkclip-${i}`}>
+                        <rect x={i * slotW} y={-10} width={slotW + 1} height={130} />
+                      </clipPath>
+                    ))}
+                  </defs>
+                  {chars.map((char, i) => (
+                    <g key={i} clipPath={`url(#frkclip-${i})`}>
+                      <motion.text
+                        x={i * slotW + slotW / 2}
+                        y={108}
+                        variants={letterBlock}
+                        textAnchor="middle"
+                        fontSize={110}
+                        fontWeight={600}
+                        fontFamily="Inter, ui-sans-serif, sans-serif"
+                      >
+                        {char}
+                      </motion.text>
+                    </g>
+                  ))}
+                </svg>
+              );
+            })()}
+          </motion.h1>
 
           {/* 1B — Sub-nav bar */}
           <motion.div
@@ -3421,7 +3459,36 @@ export default function App() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-between items-start mt-4 md:mt-8"
           >
+            {/* Left column */}
+            <div className="text-[10px] md:text-[11px] font-mono tracking-[0.2em] uppercase w-[15%]">
+              <div>FRK</div>
+              <div>France</div>
+              <div>Agence</div>
+            </div>
 
+            {/* Arrow separator */}
+            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
+              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
+            </div>
+
+            {/* Center column */}
+            <div className="flex-1 md:flex-none md:w-[30%] text-gray-800 leading-relaxed font-mono text-[10px] md:text-[11px] tracking-[0.15em]">
+              <span className="hidden md:block">
+                Sites, apps et IA<br />
+                conçus pour votre<br />
+                croissance digitale.
+              </span>
+              <span className="md:hidden">
+                Sites, apps et IA<br />
+                pour votre<br />
+                croissance.
+              </span>
+            </div>
+
+            {/* Arrow separator */}
+            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
+              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
+            </div>
 
             {/* Right nav links */}
             <div className="hidden md:flex flex-col gap-1 w-[15%] text-[10px] font-mono tracking-[0.2em] uppercase">
@@ -3474,9 +3541,9 @@ export default function App() {
             <motion.h2
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[1rem] sm:text-[1.4rem] md:text-[1.8rem] font-normal tracking-tight leading-[1] mb-6 text-white"
+              className="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-tight leading-[1] mb-6 text-white"
             >
-              CONSULTANT<br />DIGITAL
+              AGENCE<br />DIGITALE
             </motion.h2>
 
             {/* Slogan */}
@@ -3518,6 +3585,12 @@ export default function App() {
               </AnimatePresence>
             </motion.div>
 
+            {/* Description — LCP element: no animation so browser paints it immediately */}
+            <p className="text-[20px] md:text-[26px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8">
+              Des outils digitaux qui font<br />
+              croître votre activité —<br />
+              web, apps et IA.
+            </p>
 
             {/* CTA Button */}
             <motion.div
@@ -3767,16 +3840,16 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1.4, ease: "easeOut" }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[120vw] md:w-[900px] lg:w-[1000px] pointer-events-none"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160vw] md:w-[1000px] pointer-events-none"
           >
             <motion.img
               src={`${base}Pterodactyle.webp`}
               alt="Pterodactyl"
-              className="w-full h-auto"
+              className="w-full"
               animate={{
-                y: [0, -8, 0],
+                y: [0, -22, 0],
                 rotate: [-1, 1, -1],
-                x: [0, 8, 0],
+                x: [0, 12, 0],
               }}
               transition={{
                 duration: 6,
