@@ -54,7 +54,7 @@ body {
 }
 
 .face {
-  --bg: rgba(255, 255, 255, 0.92);
+  --bg: rgba(249, 115, 22, 0.92);
   background-color: var(--bg);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
   width: var(--size);

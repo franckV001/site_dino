@@ -11,6 +11,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Plus,
+  Minus,
   Monitor,
   Code2,
   Palette,
@@ -266,7 +267,8 @@ const projectsData = [
     category: "Stratégie",
     summary: "Tableau de bord connectant GA4, Search Console et CRM pour piloter la croissance avec des données unifiées.",
     url: "#",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=600&fit=crop&q=80",
+    image: `${base}processus/crm.webp`,
+    status: "EN COURS",
   },
   {
     id: "p6",
@@ -283,6 +285,15 @@ const projectsData = [
     summary: "Conception et développement d'un site vitrine thématique dédié à l'univers manga. Interface immersive et navigation fluide.",
     url: "https://franckv001.github.io/site-manga/",
     image: `${base}index_7/manga.jpg`,
+  },
+  {
+    id: "p8",
+    title: "Dashboard Analytics temps réel",
+    category: "Stratégie",
+    summary: "Tableau de bord connectant GA4, Search Console et CRM pour piloter la croissance avec des données unifiées.",
+    url: "#",
+    image: `${base}processus/crm.webp`,
+    status: "EN COURS",
   },
 ];
 
@@ -377,8 +388,8 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
               className="min-w-0 shrink-0 grow-0 w-[80vw] sm:w-[55vw] md:w-[400px] lg:w-[440px]"
             >
               <a
-                href={["p1","p2","p3","p6","p7"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
-                onClick={(e) => { if (["p1","p2","p3","p6","p7"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
+                href={["p1","p2","p3","p5","p6","p7","p8"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
+                onClick={(e) => { if (["p1","p2","p3","p5","p6","p7","p8"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
                 className="group block cursor-pointer"
               >
                 {/* Image */}
@@ -389,7 +400,7 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
                     className="w-full h-full transition-transform duration-700 group-hover:scale-105 object-cover"
                     style={"objectPosition" in project ? { objectPosition: (project as { objectPosition: string }).objectPosition } : undefined}
                   />
-                  {(project.id === "p4" || project.id === "p5") && (
+                  {((project.id === "p4" || project.id === "p5" || project.id === "p8") && (project as any).status === "EN COURS") && (
                     <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#111]/80 backdrop-blur-sm text-white text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1.5 rounded-full">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       En cours
@@ -458,7 +469,7 @@ function ProjectDetailSailingloc({}: { onBack: () => void }) {
     window.scrollTo(0, 0);
     setPageMeta(
       "SailingLoc — Réservation de Voiliers · FRK",
-      "SailingLoc — plateforme de réservation de voiliers conçue par FRK-France. Design Webflow, intégration paiement et automatisation Make.",
+      "SailingLoc — plateforme de réservation de voiliers conçue par FRANCKV. Design Webflow, intégration paiement et automatisation Make.",
       "/projets/sailingloc/"
     );
   }, []);
@@ -694,8 +705,8 @@ function ProjectDetailApex({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Apex Pro — Coaching Sportif · FRK-France",
-      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRK-France. Design moderne et animations fluides.",
+      "Apex Pro — Coaching Sportif · FRANCKV",
+      "Apex Pro — site vitrine premium pour une agence de coaching sportif, conçu et développé par FRANCKV. Design moderne et animations fluides.",
       "/projets/apex-pro/"
     );
   }, []);
@@ -875,8 +886,8 @@ function ProjectDetailTargo({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Targo — Application No-Code · FRK-France",
-      "Targo — application no-code développée par FRK-France pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble.",
+      "Targo — Application No-Code · FRANCKV",
+      "Targo — application no-code développée par FRANCKV pour optimiser la gestion et la mise en relation de professionnels. Conçu avec Bubble.",
       "/projets/targo/"
     );
   }, []);
@@ -1049,14 +1060,192 @@ function ProjectDetailTargo({}: { onBack: () => void }) {
   );
 }
 
+// ─── PROJECT IMAGE FULLSCREEN ──────────────────────────────────────────────
+
+function ProjectImageFullscreen({ onBack }: { onBack: () => void }) {
+  const [zoom, setZoom] = useState(100);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
+  return (
+    <div className="bg-black min-h-screen w-full overflow-auto flex items-center justify-center">
+      <button
+        onClick={onBack}
+        className="absolute top-6 left-6 z-50 group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-400 hover:text-white transition-colors duration-300"
+      >
+        <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
+        Retour
+      </button>
+
+      <div className="absolute top-6 right-6 z-50 flex items-center gap-3 bg-gray-900/80 backdrop-blur px-4 py-2 rounded-full">
+        <button
+          onClick={() => setZoom(Math.max(50, zoom - 10))}
+          className="text-gray-400 hover:text-white transition-colors"
+          title="Zoomer dehors"
+        >
+          <Minus size={16} />
+        </button>
+        <span className="text-[12px] font-mono text-gray-400 w-12 text-center">{zoom}%</span>
+        <button
+          onClick={() => setZoom(Math.min(300, zoom + 10))}
+          className="text-gray-400 hover:text-white transition-colors"
+          title="Zoomer dedans"
+        >
+          <Plus size={16} />
+        </button>
+      </div>
+
+      <div className="w-full h-screen flex items-center justify-center p-6">
+        <img
+          src={`${base}processus/crm.webp`}
+          alt="Dashboard Analytics"
+          className="object-contain"
+          style={{ transform: `scale(${zoom / 100})`, transformOrigin: 'center' }}
+        />
+      </div>
+    </div>
+  );
+}
+
+// ─── PROJECT DETAIL: CRM ────────────────────────────────────────────────────
+
+function ProjectDetailCRM({ onBack }: { onBack: () => void }) {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  return (
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-[#111] overflow-x-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-16 py-4 flex items-center justify-between">
+        <button
+          onClick={onBack}
+          className="group flex items-center gap-2 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300"
+        >
+          <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-1" />
+          Retour
+        </button>
+        <span className="text-[13px] font-semibold tracking-tight hidden sm:block">FRANCKV</span>
+        <a href="#" className="group flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-gray-500 hover:text-black transition-colors duration-300">
+          En cours <ArrowUpRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </header>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="pt-[57px] w-full h-[55vh] md:h-[75vh] bg-gray-900 overflow-hidden"
+      >
+        <img src={`${base}processus/crm.webp`} alt="Dashboard Analytics" className="w-full h-full object-cover" />
+      </motion.div>
+
+      <div className="px-6 md:px-16 max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="py-12 md:py-20 border-b border-gray-200"
+        >
+          <div className="flex items-center gap-3 text-[10px] font-mono tracking-[0.2em] uppercase mb-6">
+            <span className="text-gray-400">[ Stratégie ]</span>
+            <span className="w-8 h-[1px] bg-gray-300 block" />
+            <span className="text-gray-400">2026 - En cours</span>
+          </div>
+          <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] font-medium tracking-tight leading-[1] mb-8">
+            Dashboard<br />Analytics temps réel
+          </h1>
+          <p className="text-[15px] md:text-[17px] text-gray-600 leading-[1.8] max-w-2xl">
+            Tableau de bord unifié connectant GA4, Search Console et CRM pour surveiller toutes les métriques clés en temps réel. Insights actionnables et reporting automatisé.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-200"
+        >
+          {[
+            { label: "Type", value: "Analytics & BI" },
+            { label: "Statut", value: "En cours" },
+            { label: "Services", value: "Stratégie Data" },
+            { label: "Outils", value: "GA4, Search Console" },
+          ].map(({ label, value }) => (
+            <div key={label}>
+              <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-2">{label}</div>
+              <div className="text-[14px] font-medium">{value}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.32 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-8">Le défi</div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Les données analytics sont éparpillées : GA4, Search Console, HubSpot, Stripe... Les équipes perdent des heures chaque semaine à extraire et réconcilier ces données pour prendre des décisions.
+            </p>
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.8]">
+              Le défi : créer une source unique de vérité — un dashboard centralisé qui agrège toutes les métriques en temps réel et facilite l'analyse pour piloter la croissance.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.44 }}
+          className="py-10 md:py-16 border-b border-gray-200"
+        >
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-400 mb-10">Résultats</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            {[
+              { stat: "6", desc: "métriques clés" },
+              { stat: "8h", desc: "économisées/semaine" },
+              { stat: "2026", desc: "livraison" },
+            ].map(({ stat, desc }) => (
+              <div key={stat}>
+                <div className="text-[3rem] md:text-[4rem] font-medium tracking-tight leading-none mb-3">{stat}</div>
+                <div className="text-[11px] font-mono uppercase tracking-widest text-gray-500">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.5 }}
+        className="mt-16 md:mt-24 bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-32 flex flex-col items-center text-center"
+      >
+        <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-gray-500 mb-6">Projet en cours</div>
+        <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-10 max-w-xl">
+          Unifiez vos données
+        </h2>
+        <a href="crm.webp.html" className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+          Démarrer un projet <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </motion.section>
+      <SiteFooter />
+    </div>
+  );
+}
+
 // ─── PROJECT DETAIL: MANGA ───────────────────────────────────────────────────
 
 function ProjectDetailManga({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Site vitrine Manga · FRK-France",
-      "Site vitrine thématique dédié à l'univers manga, développé en HTML, CSS et JavaScript par FRK-France.",
+      "Site vitrine Manga · FRANCKV",
+      "Site vitrine thématique dédié à l'univers manga, développé en HTML, CSS et JavaScript par FRANCKV.",
       "/projets/manga/"
     );
   }, []);
@@ -1233,8 +1422,8 @@ function ProjectDetailRenaissanceAfrik({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Projet Renaissance Afrik — FRK-France",
-      "Renaissance Afrik — identité visuelle et présence digitale créées par FRK-France pour valoriser l'artisanat et la culture africaine en ligne.",
+      "Projet Renaissance Afrik — FRANCKV",
+      "Renaissance Afrik — identité visuelle et présence digitale créées par FRANCKV pour valoriser l'artisanat et la culture africaine en ligne.",
       "/projets/renaissance-afrik/"
     );
   }, []);
@@ -1444,7 +1633,7 @@ function BlogArticleNocodeVsDev({ onNavigate }: { onBack: () => void; onNavigate
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "No-Code vs Développement classique — FRK-France",
+      "No-Code vs Développement classique — FRANCKV",
       "No-Code ou développement classique ? Comparez budgets, délais et cas d'usage pour choisir la meilleure approche pour votre projet digital en 2026.",
       "/blog/nocode-vs-dev/"
     );
@@ -1643,7 +1832,7 @@ function BlogArticle5Processus({ onNavigate }: { onBack: () => void; onNavigate:
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "5 processus à automatiser dans votre PME — FRK-France",
+      "5 processus à automatiser dans votre PME — FRANCKV",
       "Découvrez 5 processus que toute PME devrait automatiser avec Make, n8n ou Zapier pour gagner des heures par semaine et réduire les erreurs humaines.",
       "/blog/5-processus-automatiser/"
     );
@@ -1735,7 +1924,7 @@ function BlogArticleIaProductivite({ onNavigate }: { onBack: () => void; onNavig
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "L'IA double votre productivité — FRK-France",
+      "L'IA double votre productivité — FRANCKV",
       "ChatGPT, Claude, Copilot : comment intégrer l'IA générative dans votre PME dès cette semaine pour doubler la productivité sans écrire de code.",
       "/blog/ia-productivite-pme/"
     );
@@ -1826,7 +2015,7 @@ function BlogArticleSiteFuir({ onNavigate }: { onBack: () => void; onNavigate: (
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "7 erreurs qui font fuir vos visiteurs — FRK-France",
+      "7 erreurs qui font fuir vos visiteurs — FRANCKV",
       "Trop lent, illisible sur mobile, sans CTA clair ? Découvrez les 7 erreurs de site qui font fuir vos visiteurs et comment les corriger rapidement.",
       "/blog/site-qui-fait-fuir/"
     );
@@ -1933,7 +2122,7 @@ function BlogArticleAppSansDev({ onNavigate }: { onBack: () => void; onNavigate:
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Créer une app sans développeur — FRK-France",
+      "Créer une app sans développeur — FRANCKV",
       "Créez votre application web sans coder avec Bubble, Glide ou Softr. Guide pratique, coûts réels et étapes clés pour lancer votre app en 30 jours.",
       "/blog/app-sans-developpeur/"
     );
@@ -2045,8 +2234,8 @@ function BlogPage({ onArticleClick }: { onBack: () => void; onArticleClick: (id:
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Blog — No-Code, IA et Automatisation — FRK-France",
-      "Tous les articles de FRK-France sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs.",
+      "Blog — No-Code, IA et Automatisation — FRANCKV",
+      "Tous les articles de FRANCKV sur le no-code, l'automatisation, l'IA et le design web. Conseils pratiques pour PME et entrepreneurs.",
       "/blog/"
     );
   }, []);
@@ -2153,8 +2342,8 @@ function PageDecouverteAnalyse({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Découverte & Analyse — Notre processus — FRK-France",
-      "FRK-France audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs.",
+      "Découverte & Analyse — Notre processus — FRANCKV",
+      "FRANCKV audite vos besoins digitaux, analyse l'existant et cadre votre projet pour un lancement efficace, ciblé et aligné sur vos objectifs.",
       "/processus/decouverte-analyse/"
     );
   }, []);
@@ -2279,8 +2468,8 @@ function PageArchitectureDesign({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Architecture & Design — Notre processus — FRK-France",
-      "FRK-France conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés.",
+      "Architecture & Design — Notre processus — FRANCKV",
+      "FRANCKV conçoit la structure digitale et le design de votre projet, du wireframing au choix des outils no-code ou dev les mieux adaptés.",
       "/processus/architecture-design/"
     );
   }, []);
@@ -2363,8 +2552,8 @@ function PageProductionBuild({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Production & Build — Notre processus — FRK-France",
-      "FRK-France développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats.",
+      "Production & Build — Notre processus — FRANCKV",
+      "FRANCKV développe et intègre votre solution digitale avec des itérations rapides, automatisation incluse et livraison orientée résultats.",
       "/processus/production-build/"
     );
   }, []);
@@ -2447,8 +2636,8 @@ function PageTestValidation({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Test & Validation — Notre processus — FRK-France",
-      "FRK-France assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital.",
+      "Test & Validation — Notre processus — FRANCKV",
+      "FRANCKV assure la recette fonctionnelle, les tests UX et les corrections nécessaires avant chaque mise en production de votre projet digital.",
       "/processus/test-validation/"
     );
   }, []);
@@ -2531,8 +2720,8 @@ function PageLancementSuivi({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "Lancement & Suivi — Notre processus — FRK-France",
-      "FRK-France accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital.",
+      "Lancement & Suivi — Notre processus — FRANCKV",
+      "FRANCKV accompagne la mise en production et assure le suivi post-lancement pour garantir la performance et l'évolution de votre projet digital.",
       "/processus/lancement-suivi/"
     );
   }, []);
@@ -2770,8 +2959,8 @@ function PageAPropos({}: { onBack: () => void }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      "À propos de FRK-France — Agence No-Code Paris",
-      "Découvrez FRK-France : notre histoire, nos valeurs et l'équipe derrière vos projets digitaux. Agence No-Code & IA fondée à Paris en 2024.",
+      "À propos de FRANCKV — Agence No-Code Paris",
+      "Découvrez FRANCKV : notre histoire, nos valeurs et l'équipe derrière vos projets digitaux. Agence No-Code & IA fondée à Paris en 2024.",
       "/a-propos/"
     );
   }, []);
@@ -2817,7 +3006,7 @@ function PageAPropos({}: { onBack: () => void }) {
     },
     {
       year: "2024",
-      label: "Création de FRK-France",
+      label: "Création de FRANCKV",
       desc: "Fondation de l'agence à Paris. Une structure légère, réactive, orientée résultats — pour PME et entrepreneurs qui veulent aller vite.",
     },
   ];
@@ -2835,13 +3024,12 @@ function PageAPropos({}: { onBack: () => void }) {
       <section className="pt-[57px] bg-[#0a0a0a] text-white px-6 md:px-16 py-20 md:py-36">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-500 mb-8">FRK-France · Paris · Fondée en 2024</div>
             <h1 className="text-[2.4rem] sm:text-[3.2rem] md:text-[4.5rem] font-medium tracking-tight leading-[1.04] mb-8">
               On construit des outils<br className="hidden md:block" /> qui font vraiment<br className="hidden md:block" />{" "}
               <span className="text-[#f97316]">croître votre activité.</span>
             </h1>
             <p className="text-[16px] md:text-[18px] text-gray-400 leading-[1.8] max-w-2xl">
-              FRK-France est une agence digitale indépendante spécialisée en No-Code, design web et automatisation IA. Pas de structure lourde, pas d'intermédiaires inutiles — juste l'essentiel, livré vite et bien.
+              FRANCKV est une agence digitale indépendante spécialisée en No-Code, design web et automatisation IA. Pas de structure lourde, pas d'intermédiaires inutiles — juste l'essentiel, livré vite et bien.
             </p>
           </motion.div>
         </div>
@@ -2973,7 +3161,7 @@ function PageAPropos({}: { onBack: () => void }) {
             className="pt-10"
           >
             <p className="text-[13px] text-gray-500 leading-relaxed max-w-xl">
-              Sur les projets plus larges, FRK-France s'appuie sur un réseau de freelances qualifiés — rédacteurs SEO, développeurs back-end, graphistes — tous sélectionnés pour leur exigence et leur réactivité.
+              Sur les projets plus larges, FRANCKV s'appuie sur un réseau de freelances qualifiés — rédacteurs SEO, développeurs back-end, graphistes — tous sélectionnés pour leur exigence et leur réactivité.
             </p>
           </motion.div>
         </div>
@@ -3014,7 +3202,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
 
           {/* Colonne 1 — Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-            <span className="text-[15px] font-semibold tracking-tight">FRK-France</span>
+            <span className="text-[15px] font-semibold tracking-tight">FRANCKV</span>
             <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Agence Digitale<br />Paris, France</span>
             <div className="flex flex-col gap-1 mt-2">
               <a href="mailto:franckviator@gmail.com" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">franckviator@gmail.com</a>
@@ -3076,7 +3264,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
 
         {/* Copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRK-France — Tous droits réservés</div>
+          <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">© 2026 FRANCKV — Tous droits réservés</div>
           <div className="text-[10px] font-mono text-gray-600 tracking-widest uppercase">Solution No Code · Paris, France</div>
         </div>
       </div>
@@ -3235,8 +3423,8 @@ export default function App() {
   useEffect(() => {
     if (activePage === null) {
       setPageMeta(
-        "FRK-France — Design Web, No-Code & IA",
-        "FRK-France, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs.",
+        "FRANCKV — Design Web, No-Code & IA",
+        "FRANCKV, agence digitale à Paris. Création de sites web, applications no-code et automatisation IA sur-mesure pour PME et entrepreneurs.",
         "/"
       );
     }
@@ -3307,6 +3495,12 @@ export default function App() {
   }
   if (activePage === "p7") {
     return <>{nav}<ProjectDetailManga onBack={() => setActivePage(null)} /></>;
+  }
+  if (activePage === "p5" || activePage === "p8") {
+    return <>{nav}<ProjectDetailCRM onBack={() => setActivePage(null)} /></>;
+  }
+  if (activePage === "p8-image") {
+    return <ProjectImageFullscreen onBack={() => setActivePage("p8")} />;
   }
   if (activePage === "blog") {
     return <>{nav}<BlogPage onBack={() => setActivePage(null)} onArticleClick={(id) => setActivePage(`blog-${id}`)} /></>;
@@ -3400,14 +3594,16 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* 1A — Header: NHM SVG Logo */}
+        {/* 1A — Header: Simple Logo */}
         <motion.header
           initial="initial"
           animate="animate"
           variants={{ animate: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
           className="pt-6 px-6 md:px-16 z-20"
         >
-          <motion.h1
+          {/* Logo FRANCKV */}
+          <motion.div
+            className="mb-6"
             variants={{
               initial: { scale: 1.03 },
               animate: {
@@ -3415,32 +3611,31 @@ export default function App() {
                 transition: { staggerChildren: 0.06, delayChildren: 0.1 },
               },
             }}
-            className="w-full"
           >
             {(() => {
-              const chars = ["F","R","K","-","F","r","a","n","c","e"];
-              const slotW = 100;
+              const chars = ["F","R","A","N","C","K","V"];
+              const slotW = 35;
               return (
                 <svg
-                  viewBox="0 0 1000 115"
-                  className="w-full fill-white"
-                  aria-label="FRK-France"
+                  viewBox="0 0 490 70"
+                  className="w-52 fill-white"
+                  aria-label="FRANCKV"
                 >
                   <defs>
                     {chars.map((_, i) => (
-                      <clipPath key={i} id={`frkclip-${i}`}>
-                        <rect x={i * slotW} y={-10} width={slotW + 1} height={130} />
+                      <clipPath key={i} id={`franckv-${i}`}>
+                        <rect x={i * slotW} y={-5} width={slotW + 1} height={80} />
                       </clipPath>
                     ))}
                   </defs>
                   {chars.map((char, i) => (
-                    <g key={i} clipPath={`url(#frkclip-${i})`}>
+                    <g key={i} clipPath={`url(#franckv-${i})`}>
                       <motion.text
                         x={i * slotW + slotW / 2}
-                        y={108}
+                        y={54}
                         variants={letterBlock}
                         textAnchor="middle"
-                        fontSize={110}
+                        fontSize={40}
                         fontWeight={600}
                         fontFamily="Inter, ui-sans-serif, sans-serif"
                       >
@@ -3451,7 +3646,7 @@ export default function App() {
                 </svg>
               );
             })()}
-          </motion.h1>
+          </motion.div>
 
           {/* 1B — Sub-nav bar */}
           <motion.div
@@ -3459,37 +3654,6 @@ export default function App() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-between items-start mt-4 md:mt-8"
           >
-            {/* Left column */}
-            <div className="text-[10px] md:text-[11px] font-mono tracking-[0.2em] uppercase w-[15%]">
-              <div>FRK</div>
-              <div>France</div>
-              <div>Agence</div>
-            </div>
-
-            {/* Arrow separator */}
-            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
-              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
-            </div>
-
-            {/* Center column */}
-            <div className="flex-1 md:flex-none md:w-[30%] text-gray-800 leading-relaxed font-mono text-[10px] md:text-[11px] tracking-[0.15em]">
-              <span className="hidden md:block">
-                Sites, apps et IA<br />
-                conçus pour votre<br />
-                croissance digitale.
-              </span>
-              <span className="md:hidden">
-                Sites, apps et IA<br />
-                pour votre<br />
-                croissance.
-              </span>
-            </div>
-
-            {/* Arrow separator */}
-            <div className="hidden md:flex items-start pt-0.5 w-[5%] justify-center">
-              <ArrowRight size={14} strokeWidth={1} className="text-gray-400" />
-            </div>
-
             {/* Right nav links */}
             <div className="hidden md:flex flex-col gap-1 w-[15%] text-[10px] font-mono tracking-[0.2em] uppercase">
               {[
@@ -3541,9 +3705,9 @@ export default function App() {
             <motion.h2
               variants={fadeUp}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-tight leading-[1] mb-6 text-white"
+              className="text-[1.5rem] sm:text-[2.2rem] md:text-[3rem] font-normal tracking-tight leading-[1] mb-6 text-white"
             >
-              AGENCE<br />DIGITALE
+              CONSULTANT<br />DIGITAL
             </motion.h2>
 
             {/* Slogan */}
@@ -3586,7 +3750,7 @@ export default function App() {
             </motion.div>
 
             {/* Description — LCP element: no animation so browser paints it immediately */}
-            <p className="text-[20px] md:text-[26px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8">
+            <p className="text-[16px] md:text-[20px] text-white/90 w-full max-w-[400px] leading-[1.5] mb-8">
               Des outils digitaux qui font<br />
               croître votre activité —<br />
               web, apps et IA.
@@ -3632,7 +3796,7 @@ export default function App() {
             {/* Agency info */}
             <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>
               <div className="text-[10px] font-bold font-mono tracking-widest uppercase mb-2 text-white">
-                FRK-France
+                FRANCKV
               </div>
               <div className="text-[12px] text-white/70 leading-[1.6]">
                 Agence digitale<br />Paris, France
@@ -3693,7 +3857,7 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#f97316] mb-10"
           >
-            Pourquoi FRK-France
+            Pourquoi FRANCKV
           </motion.p>
 
           {/* Headline */}
@@ -3717,7 +3881,7 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-[15px] md:text-[17px] text-gray-500 leading-[1.85] max-w-2xl mb-20"
           >
-            FRK-France existe pour donner aux PME et aux entrepreneurs
+            FRANCKV existe pour donner aux PME et aux entrepreneurs
             les mêmes armes que les grandes entreprises — livrées vite,
             construites pour durer, et que vous gérez vous-même.
           </motion.p>
@@ -3768,7 +3932,7 @@ export default function App() {
               "Le meilleur outil digital, c'est celui que vos équipes utilisent vraiment — pas celui qui impressionne en démo."
             </p>
             <cite className="mt-3 block text-[10px] font-mono uppercase tracking-widest text-gray-400 not-italic">
-              Franck Viator · Fondateur, FRK-France
+              Franck Viator · Fondateur, FRANCKV
             </cite>
           </motion.blockquote>
         </div>

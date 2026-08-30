@@ -1,8 +1,8 @@
-# FRK-France
+# FRANCKV
 
-> Agence digitale à Paris spécialisée en design web, développement No-Code et automatisation IA. Solutions sur-mesure pour PME et entrepreneurs.
+> Consultant digital à Paris spécialisé en design web, développement No-Code et automatisation IA. Solutions sur-mesure pour PME et entrepreneurs.
 
-FRK-France accompagne les entreprises dans leur transformation digitale : création de sites web modernes, applications No-Code (Webflow, Bubble), automatisation de processus métier (Make, n8n) et intégration d'outils IA. Fondée en 2024, l'agence intervient sur l'ensemble du cycle projet — du cadrage au suivi post-lancement.
+FRANCKV accompagne les entreprises dans leur transformation digitale : création de sites web modernes, applications No-Code (Webflow, Bubble), automatisation de processus métier (Make, n8n) et intégration d'outils IA. Fondée en 2024, l'agence intervient sur l'ensemble du cycle projet — du cadrage au suivi post-lancement.
 
 ## Services
 
