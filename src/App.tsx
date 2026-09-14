@@ -2830,18 +2830,6 @@ function NavTab({
 
 const faqItems = [
   {
-    q: "Combien coûte un projet ?",
-    a: "Chaque projet est unique. Un site vitrine no-code démarre à partir de 800 €, une application sur mesure à partir de 2 500 €. Je fournis un devis détaillé après une session de découverte gratuite de 30 minutes.",
-    link: "blog-app-sans-developpeur",
-    linkLabel: "Créer une app en 30 jours →",
-  },
-  {
-    q: "Quel est le délai de livraison ?",
-    a: "Un site vitrine est livré en 1 à 3 semaines. Une application avec automatisations prend généralement 3 à 6 semaines selon le périmètre défini en phase de cadrage.",
-    link: null,
-    linkLabel: null,
-  },
-  {
     q: "No-Code ou développement classique ?",
     a: "Le No-Code (Webflow, Bubble…) livre plus vite à moindre coût, avec un contenu modifiable par vous-même. Le développement sur mesure est préféré pour des logiques métier très spécifiques ou des performances maximales. Je vous conseille l'approche adaptée à votre contexte.",
     link: "blog-nocode-vs-dev",
