@@ -3771,7 +3771,7 @@ export default function App() {
                 FRANCKV
               </div>
               <div className="text-[12px] text-white/70 leading-[1.6]">
-                Agence digitale<br />Paris, France
+                Consultant digital<br />Paris, France
               </div>
             </motion.div>
 
