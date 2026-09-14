@@ -2918,16 +2918,6 @@ function FaqSection({ onNavigate }: { onNavigate?: (page: string) => void }) {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-[13px] text-gray-400 mb-4">Vous avez une question spécifique ?</p>
-          <a
-            href="mailto:contact@franckv.fr"
-            className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.15em] uppercase text-[#111] hover:text-gray-500 transition-colors duration-200"
-          >
-            Écrire un message <ArrowUpRight size={14} strokeWidth={1.5} />
-          </a>
-        </div>
       </div>
     </section>
   );
