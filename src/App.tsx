@@ -3999,13 +3999,13 @@ export default function App() {
         </motion.div>
 
         {/* 2D — Pterodactyl in Expertise section */}
-        <div className="min-h-[260px] md:min-h-[480px] w-full relative">
+        <div className="min-h-[200px] sm:min-h-[300px] md:min-h-[480px] w-full relative">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1.4, ease: "easeOut" }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160vw] md:w-[1000px] pointer-events-none"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[120vw] md:w-[800px] lg:w-[1000px] pointer-events-none"
           >
             <motion.img
               src={`${base}Pterodactyle.webp`}
