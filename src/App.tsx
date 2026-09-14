@@ -3638,6 +3638,7 @@ export default function App() {
                         fontSize={40}
                         fontWeight={600}
                         fontFamily="Inter, ui-sans-serif, sans-serif"
+                        fill={i === 6 ? "#f97316" : "white"}
                       >
                         {char}
                       </motion.text>
