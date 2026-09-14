@@ -3174,7 +3174,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
           {/* Colonne 1 — Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <span className="text-[15px] font-semibold tracking-tight">FRANCKV</span>
-            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Agence Digitale<br />Paris, France</span>
+            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase leading-relaxed">Consultant Digital<br />Paris, France</span>
             <div className="flex flex-col gap-1 mt-2">
               <a href="mailto:contact@franckv.fr" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">contact@franckv.fr</a>
               <a href="tel:+33650135857" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">+33 6 50 13 58 57</a>
