@@ -262,15 +262,6 @@ const projectsData = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=600&fit=crop&q=80",
   },
   {
-    id: "p5",
-    title: "Dashboard Analytics temps réel",
-    category: "Stratégie",
-    summary: "Tableau de bord connectant GA4, Search Console et CRM pour piloter la croissance avec des données unifiées.",
-    url: "#",
-    image: `${base}processus/crm.webp`,
-    status: "EN COURS",
-  },
-  {
     id: "p6",
     title: "Site vitrine Targo",
     category: "Design Web",
@@ -388,8 +379,8 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
               className="min-w-0 shrink-0 grow-0 w-[80vw] sm:w-[55vw] md:w-[400px] lg:w-[440px]"
             >
               <a
-                href={["p1","p2","p3","p5","p6","p7","p8"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
-                onClick={(e) => { if (["p1","p2","p3","p5","p6","p7","p8"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
+                href={["p1","p2","p3","p6","p7","p8"].includes(project.id) ? undefined : (project.url?.startsWith("https://") || project.url?.startsWith("http://") ? project.url : undefined)}
+                onClick={(e) => { if (["p1","p2","p3","p6","p7","p8"].includes(project.id)) { e.preventDefault(); onProjectClick(project.id); } }}
                 className="group block cursor-pointer"
               >
                 {/* Image */}
@@ -400,7 +391,7 @@ function ProjectsSection({ onProjectClick }: { onProjectClick: (id: string) => v
                     className="w-full h-full transition-transform duration-700 group-hover:scale-105 object-cover"
                     style={"objectPosition" in project ? { objectPosition: (project as { objectPosition: string }).objectPosition } : undefined}
                   />
-                  {((project.id === "p4" || project.id === "p5" || project.id === "p8") && (project as any).status === "EN COURS") && (
+                  {((project.id === "p4" || project.id === "p8") && (project as any).status === "EN COURS") && (
                     <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#111]/80 backdrop-blur-sm text-white text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1.5 rounded-full">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       En cours
@@ -3496,7 +3487,7 @@ export default function App() {
   if (activePage === "p7") {
     return <>{nav}<ProjectDetailManga onBack={() => setActivePage(null)} /></>;
   }
-  if (activePage === "p5" || activePage === "p8") {
+  if (activePage === "p8") {
     return <>{nav}<ProjectDetailCRM onBack={() => setActivePage(null)} /></>;
   }
   if (activePage === "p8-image") {
