@@ -260,6 +260,7 @@ const projectsData = [
     summary: "Workflows automatisés avec n8n et HubSpot pour qualifier et nurture les leads entrants. Gain de 8h/semaine.",
     url: "#",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=600&fit=crop&q=80",
+    status: "EN COURS",
   },
   {
     id: "p6",
