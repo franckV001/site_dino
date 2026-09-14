@@ -255,9 +255,9 @@ const projectsData = [
   },
   {
     id: "p4",
-    title: "Automatisation CRM & Marketing",
+    title: "Automatisation & IA",
     category: "No Code & IA",
-    summary: "Workflows automatisés avec n8n et HubSpot pour qualifier et nurture les leads entrants. Gain de 8h/semaine.",
+    summary: "Workflows automatisés avec Make, n8n et Zapier pour optimiser vos processus métier. Intégration d'outils IA (ChatGPT, Claude, Copilot) pour amplifier la productivité. Gain de 8h+/semaine.",
     url: "#",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=600&fit=crop&q=80",
     status: "EN COURS",
