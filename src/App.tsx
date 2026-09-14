@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import BoxLoader from "./components/ui/box-loader";
+import CookieBanner from "./components/ui/cookie-banner";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   motion,
@@ -4301,6 +4302,9 @@ export default function App() {
         <SiteFooter onNavigate={(p) => setActivePage(p)} />
 
       </section>
+
+      {/* Cookie Banner */}
+      <CookieBanner />
     </div>
   );
 }
