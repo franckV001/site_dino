@@ -1222,7 +1222,7 @@ function ProjectDetailCRM({ onBack }: { onBack: () => void }) {
         <h2 className="text-[2rem] md:text-[3.5rem] font-medium tracking-tight mb-10 max-w-xl">
           Unifiez vos données
         </h2>
-        <a href="crm.webp.html" className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
+        <a href="/crm.webp.html" className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-[#111] px-8 py-4 rounded-md text-[13px] font-medium tracking-wide hover:shadow-[4px_4px_0px_rgba(255,255,255,0.3)] transition-all duration-300">
           Démarrer un projet <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </motion.section>
