@@ -3164,7 +3164,7 @@ function SiteFooter({ onNavigate }: { onNavigate?: (page: string) => void } = {}
 
           {/* Colonne 1 — Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-            <img src={`${base}LOGO/LOGO003.svg`} alt="FRANCKV" className="h-16 w-auto" />
+            <img src={`${base}LOGO/LOGO003b.svg`} alt="FRANCKV" className="h-16 w-auto" />
             <div className="flex flex-col gap-1 mt-2">
               <a href="mailto:contact@franckv.fr" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">contact@franckv.fr</a>
               <a href="tel:+33650135857" className="text-[11px] font-mono text-gray-500 hover:text-white transition-colors duration-200">+33 6 50 13 58 57</a>
@@ -3574,7 +3574,7 @@ export default function App() {
             }}
           >
             <img
-              src={`${base}LOGO/LOGO003.svg`}
+              src={`${base}LOGO/LOGO003b.svg`}
               alt="FRANCKV"
               className="w-40 h-auto"
             />
