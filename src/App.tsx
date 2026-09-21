@@ -3577,7 +3577,7 @@ export default function App() {
             <img
               src={`${base}LOGO/LOGO003.svg`}
               alt="FRANCKV"
-              className="w-64 h-auto"
+              className="w-40 h-auto"
             />
           </motion.div>
 
