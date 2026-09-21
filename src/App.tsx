@@ -3579,45 +3579,15 @@ export default function App() {
               initial: { scale: 1.03 },
               animate: {
                 scale: 1,
-                transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+                transition: { duration: 0.6 },
               },
             }}
           >
-            {(() => {
-              const chars = ["F","R","A","N","C","K","V"];
-              const slotW = 35;
-              return (
-                <svg
-                  viewBox="0 0 490 70"
-                  className="w-52 fill-white"
-                  aria-label="FRANCKV"
-                >
-                  <defs>
-                    {chars.map((_, i) => (
-                      <clipPath key={i} id={`franckv-${i}`}>
-                        <rect x={i * slotW} y={-5} width={slotW + 1} height={80} />
-                      </clipPath>
-                    ))}
-                  </defs>
-                  {chars.map((char, i) => (
-                    <g key={i} clipPath={`url(#franckv-${i})`}>
-                      <motion.text
-                        x={i * slotW + slotW / 2}
-                        y={54}
-                        variants={letterBlock}
-                        textAnchor="middle"
-                        fontSize={40}
-                        fontWeight={600}
-                        fontFamily="Inter, ui-sans-serif, sans-serif"
-                        fill={i === 6 ? "#f97316" : "white"}
-                      >
-                        {char}
-                      </motion.text>
-                    </g>
-                  ))}
-                </svg>
-              );
-            })()}
+            <img
+              src={`${base}LOGO/LOGO003.svg`}
+              alt="FRANCKV"
+              className="w-64 h-auto"
+            />
           </motion.div>
 
           {/* 1B — Sub-nav bar */}
