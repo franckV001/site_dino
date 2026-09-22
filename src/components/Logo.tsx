@@ -15,13 +15,13 @@ export default function Logo({ className = "w-40 h-auto" }: { className?: string
           .logo-text {
             font-family: 'Orbitron', sans-serif;
             font-weight: 300;
-            font-size: 140px;
+            font-size: 90px;
             fill: #ffffff;
           }
           .logo-text-v {
             font-family: 'Orbitron', sans-serif;
             font-weight: 300;
-            font-size: 140px;
+            font-size: 90px;
             fill: #f00;
           }
         `}</style>
